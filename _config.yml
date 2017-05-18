@@ -4,7 +4,7 @@ header-img: img/home-bg.png
 email: jelolearns@gmail.com
 copyright_name: jelocodes
 description: > # this means to ignore newlines until "baseurl:"
-  The one where I learn full-stack web development and hilarity ensues.
+  The one where I learn full-stack development and hilarity ensues.
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: jelotweets
 github_username:  jelocodes

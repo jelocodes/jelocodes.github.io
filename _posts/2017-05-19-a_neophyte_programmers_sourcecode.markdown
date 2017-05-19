@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  A neophyte programmer's sourcecode  
-date:   2017-05-19 07:06:59 +0000
+date:   2017-05-19 03:07:00 -0400
 ---
 
-I might as well have grown up part amish. In fact, family road trips even just a couple of years ago would consist of pit-stops that would see those awkward road-map pamphlets unfold to cover our entire windshield so the driver could get their barings. "Human eyes and ears are best!" they would say. 
+I might as well have grown up part amish. In fact, family road trips even just a couple of years ago would consist of pit-stops that would see those awkward road-map pamphlets unfold to cover our entire windshield so the driver could get their barings. “Human eyes and ears are best!” they would say, shaking their heads at GPS.
 
 It's not that my family were slow adapters. It's just that they were convinced that most new technology were fads and wouldn't last. It was when they needed to get something new out of necessity - like a VCR to play all of this year's new movies when beta tapes became obsolete, or satellite TV to keep up with their shows on the new non-cable channels - that I suddenly held all the power. I'd sit there, devouring user manuals like a maniac, making things work when no one else could be bothered to try. This became my little zone of expertdom, and I liked it very much. This knack became less of a chore and more of a hobby when I acquired (a.k.a. successfully begged for) our first P.C. with a dial-up internet connection.  
 
@@ -32,6 +32,5 @@ Incredulously I turned to face the stranger who had somehow replaced my father w
 Yeah, it's a brave new world alright. And if you happen to be one of the people that can see it flooding with code, then why not learn fast and make waves?
 
 ![](https://media.giphy.com/media/ZiE2Yj0Hym1yM/giphy.gif)
-
 > #minswan.
 

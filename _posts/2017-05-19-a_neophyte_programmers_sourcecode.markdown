@@ -9,6 +9,7 @@ I might as well have grown up part amish. In fact, family road trips even just a
 It's not that my family were slow adapters. It's just that they were convinced that most new technology were fads and wouldn't last. It was when they needed to get something new out of necessity - like a VCR to play all of this year's new movies when beta tapes became obsolete, or satellite TV to keep up with their shows on the new non-cable channels - that I suddenly held all the power. I'd sit there, devouring user manuals like a maniac, making things work when no one else could be bothered to try. This became my little zone of expertdom, and I liked it very much. What started as a family duty became more of a hobby when I acquired (a.k.a. successfully begged for) our first P.C. with a dial-up internet connection. This was a piece of technology that felt solely mine, as no one else in the house really knew what it was even for (They just knew everybody was getting one for some reason). 
 
 ![](http://i.imgur.com/1mv08Xe.jpg)
+> This WAS nifty!
 
 Fast forward to now, it's odd that it isn't so odd anymore that both my parents have Facebook accounts and use the internet daily. The old adage goes that fish don’t notice that they’re in water because it’s so ubiquitous around them. In the same token, the world is drowning in code. It permeates invisibly and is blurring the lines between the physical and digital, like a second layer building upon the first.
 

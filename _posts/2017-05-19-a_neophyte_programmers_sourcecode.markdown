@@ -30,7 +30,7 @@ I picked up my Dad the other day to drive him to an appointment downtown. It was
 
 Incredulously I turned to face the stranger who had somehow replaced my father while I wasn't looking.
 
-Yeah, it's a brave new world alright. And if you happen to be one of the people that can see it flooding with code, then why not learn fast and make waves?
+Yeah, it's a brave new world alright. And if you happen to be one of the people that can see it flooding with code, then why not learn how to make waves?
 
 ![](https://media.giphy.com/media/ZiE2Yj0Hym1yM/giphy.gif)
 > #minswan.

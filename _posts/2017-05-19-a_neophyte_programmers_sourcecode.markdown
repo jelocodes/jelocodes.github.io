@@ -4,7 +4,7 @@ title:  A neophyte programmer's sourcecode
 date:   2017-05-19 03:07:00 -0400
 ---
 
-I might as well have grown up part amish. In fact, family road trips even just a couple of years ago would consist of pit-stops that would see those awkward road-map pamphlets unfold to cover our entire windshield so the driver could get their barings. “Human eyes and ears are best!” they would say.
+I might as well have grown up part amish. In fact, family road trips just a couple of years ago would consist of pit-stops that would see those awkward road-map pamphlets unfold to cover our entire windshield so the driver could get their barings. “Human eyes and ears are best!” they would say.
 
 It's not that my family were slow adapters. It's just that they were convinced that most new technology were fads and wouldn't last. It was when they needed to get something new out of necessity - like a VCR to play all of this year's new movies when beta tapes became obsolete, or satellite TV to keep up with their shows on the new non-cable channels - that I suddenly held all the power. I'd sit there, devouring user manuals like a maniac, making things work when no one else could be bothered to try. This became my little zone of expertdom, and I liked it very much. What started as a family duty became more of a hobby when I acquired (a.k.a. successfully begged for) our first P.C. with a dial-up internet connection. This was a piece of technology that felt solely mine, as no one else in the house really knew what it was even for (They just knew everybody was getting one for some reason). 
 

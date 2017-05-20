@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  A neophyte programmer's sourcecode  
+title:  i_program.why?  
 date:   2017-05-19 03:07:00 -0400
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Reflections on Ruby: Pass the Syntactic Sugar"
-date:   2017-06-09 04:28:55 +0000
+title:  "Pass the Syntactic Sugar"
+date:   2017-06-09 00:28:55 -0400
 ---
 
 

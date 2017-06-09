@@ -30,7 +30,7 @@ for (var i = 0; i < 3; i++) {
 }
 ```
 
-It's fairly readable, but it isn't so abstract. We're explicitly *stating* what we're doing, declaring a variable (i) to keep track of an incrementing state (until it reachers "3") in order to carry out our task that amount of times. There's no other way to express this, and the programmer is left needing to type a similar block out each time they write code (unless you use a precompiled library).
+It's fairly readable, but it isn't so abstract. We're explicitly *stating* what we're doing, declaring a variable (i) to keep track of an incrementing state, until it reaches "3," in order to carry out our task that amount of times. There's no other way to express this, and the programmer is left needing to type out a similar block each time they want the same behaviour (unless they use a precompiled library).
 
 Here's the same task in Ruby:
 

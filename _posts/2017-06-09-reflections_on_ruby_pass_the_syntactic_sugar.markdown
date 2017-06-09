@@ -14,7 +14,7 @@ Truth be told, there's something to be said for the predictability of statically
 
 Enter Ruby, which changes a lot of this for me. This is, in a very large part, due to this concept of "Syntactic Sugar" (aptly named for how sweet it is).
 
-Yukihiro "Matz" Matsumoto, in creating Ruby, built the language with the programmer's enjoyment in mind. The flexibility of its syntax therefore makes it incredibly fun to write in (it's delicious if you will) *without* compromising the specificity of how the interpreter reads your code. Ruby *abstracts* away repetetive often occurring verbose expressions to simpler commands, with built-in human-readable shortcuts. At first, I didn't understand the concept, because I thought the lessened lawfulness of the language would make using it more errorprone and ambiguous. However, I was quick to learn that there is a difference between abstraction and ambiguity. 
+Yukihiro "Matz" Matsumoto, in creating Ruby, built the language with the programmer's enjoyment in mind. The flexibility of its syntax therefore makes it incredibly fun to write in (it's delicious if you will) *without* compromising the specificity of how the interpreter reads your code. Ruby *abstracts* away often occurring verbose expressions to simpler commands, with built-in human-readable shortcuts. At first, I didn't understand the concept, because I thought the lessened lawfulness of the language would make using it more errorprone and ambiguous. However, I was quick to learn that there is a difference between abstraction and ambiguity. 
 
 As Edsger Dijkstra said, *"Being abstract is something profoundly different from being vague... The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise."*
 
@@ -42,7 +42,7 @@ end
 
 All of the explicit logic is abstracted away to instead make it perfectly clear what we want our program to do: put out the desired phrase 3 times. Of course, *'times'* is really a method which is being called on the object the integer '3' using dot notation, but Ruby can be written in such a way so that users not yet knowing its internal mechanisms can make sense of the program flow more easily, and thus, code faster, lighter, and more naturally.
 
-As an aside for the next example, recall that Ruby is an Object Oriented language, and as an extension of this, *everything* in Ruby is an object. So called 'classes' are objects that are both blueprints and factories that create more objects (called 'instances') of that class's kind (each instance of the class contains information (data attributes) and behaviour (methods) as described by the class blueprint). Let's say we're creating a User class to represent users in your app, and each instance of a user has to have a screen name, which we'll place in a variable called @screen_name. 
+As an aside for the next example, recall that Ruby is an Object Oriented language, and as an extension of this, *everything* in Ruby is an object. So called 'classes' are objects that are both blueprints and factories that create more objects (called 'instances') of that class's kind (each instance of the class contains information (data attributes) and behaviour (methods) as described by the class blueprint). Let's say we're creating a User class to represent users in our app, and each instance of a user has to have a screen name, which we'll place in a variable called @screen_name. 
 
 In the body of the User class, we'd create a so-called 'setter' method so instances can call upon this method to 'set' the value of their screen names. The method could be called anything, like set_name, as seen below:
 
@@ -56,7 +56,7 @@ Ruby however allows us to define methods ending with an equal sign(=). We can re
 
 ```
 def name=(name)
-  @name = name
+  @screen_name = name
 end
 ```
 
@@ -66,7 +66,7 @@ name= does exactly what set_name did, and despite the, at first, odd naming conv
 new_user.name=('Wintermute')
 ```
 
-In this case, the string 'Wintermute' is the argument passed into the name= method, which sets the @name variable equal to that value. However, there's a reason for the equal sign naming convention. Ruby allows us to forgo the parentheses for methods which accept only one argument. So you can instead do this:
+In this case, the string 'Wintermute' is the argument passed into the name= method, which sets the @screen_name variable equal to that value. However, there's a reason for the equal sign naming convention. Ruby allows us to forgo the parentheses for methods which accept only one argument. So you can instead do this:
 
 ```
 new_user.name = 'Wintermute'

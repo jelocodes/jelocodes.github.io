@@ -40,7 +40,7 @@ Here's the same task in Ruby:
 end
 ```
 
-All of the explicit logic is abstracted away to instead make it perfectly clear what we want our program to do: put out the desired phrase 3 times. Of course, *'times'* is really a method which is being called on the object the integer '3' using dot notation, but Ruby is written in such a way that users not yet knowing the internal mechanisms can make sense of the program flow more easily, and thus, code faster, lighter, and more naturally.
+All of the explicit logic is abstracted away to instead make it perfectly clear what we want our program to do: put out the desired phrase 3 times. Of course, *'times'* is really a method which is being called on the object the integer '3' using dot notation, but Ruby can be written in such a way so that users not yet knowing its internal mechanisms can make sense of the program flow more easily, and thus, code faster, lighter, and more naturally.
 
 As an aside for the next example, recall that Ruby is an Object Oriented language, and as an extension of this, *everything* in Ruby is an object. So called 'classes' are objects that are both blueprints and factories that create more objects (called 'instances') of that class's kind (each instance of the class contains information (data attributes) and behaviour (methods) as described by the class blueprint). Let's say we're creating a User class to represent users in your app, and each instance of a user has to have a screen name, which we'll place in a variable called @screen_name. 
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  i_program.why?  
+title:  "i_program.why?  "
 date:   2017-05-19 03:07:00 -0400
 ---
 
@@ -33,5 +33,4 @@ Incredulously I turned to face the stranger who had somehow replaced my father w
 Yeah, it's a brave new world alright. And if you happen to be one of the people that can see it flooding with code, then why not learn how to make waves?
 
 ![](https://media.giphy.com/media/ZiE2Yj0Hym1yM/giphy.gif)
-> #minswan.
 

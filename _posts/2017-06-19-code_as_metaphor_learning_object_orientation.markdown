@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Code As Metaphor: Learning Object Orientation"
-date:   2017-06-19 06:07:17 +0000
+date:   2017-06-19 02:07:18 -0400
 ---
 
 When I started coding as a hobbyist a few years ago, I began by seeing a computer program as a list of tasks for the computer to follow. I would write the logic of my first simple programs as a series of statements to be carried out in succession, like a check-list. Information, or so-called *data*, was passed around the program ecosystem, and procedures, subroutines, or so-called functions or *methods*, were things that manipulated said data. 
@@ -11,7 +11,7 @@ In other words, the program would run top to bottom, and the aforementioned func
 ![](https://10philosophycm.wikispaces.com/file/view/Platonic%20Forms%202.jpg/387085090/468x348/Platonic%20Forms%202.jpg)
 > Plato's Theory of Forms
 
-The ancient Greek philosopher Plato would speak of the 'ideal' form. There were material forms, but there were also, according to him, higher forms. Material forms exist in the physical: like various different trees scattered in a park. But in the mind, there was a so-called 'The Platonic Tree' - a higher, ethereal idealization of what all trees, in general, were: the 'idea' of a tree. This metaphysical 'idea' of a tree, according to Plato, is what allowed humans to ponder the earthly material trees and categorize them as such. We can conceive of objects in our mind without having the object ever be in the room. In this way, we are really talking about the 'idea' of the object: a mental representation or model, or it's Platonic Form. Even when we speak the name of something aloud, that something may not be physically present, but the sound waves reverberating through air create the 'idea' of it. Likewise, when we write the word 'tree' on paper, it is representative of an actual tree. 
+The ancient Greek philosopher Plato would speak of the 'ideal' form. There were material forms, but there were also, according to him, higher forms. Material forms exist in the physical: like various different trees scattered in a park. But in the mind, there was a so-called 'Platonic Tree' - a higher, ethereal idealization of what all trees, in general, were: the 'idea' of a tree. This metaphysical 'idea' of a tree, according to Plato, is what allowed humans to ponder the earthly material trees and categorize them as such. We can conceive of objects in our mind without having the object ever be in the room. In this way, we are really talking about the 'idea' of the object: a mental representation or model, or it's Platonic Form. Even when we speak the name of something aloud, that something may not be physically present, but the sound waves reverberating through air create the 'idea' of it. Likewise, when we write the word 'tree' on paper, it is representative of an actual tree. 
 
 ![](http://johnnyholland.org/wp-content/uploads/2011/12/aristotle-header.jpg)
 > "The greatest thing by far is to be a master of metaphor." - Aristotle, looking super serious.

@@ -6,7 +6,7 @@ date:   2017-06-19 02:07:18 -0400
 
 When I started coding as a hobbyist a few years ago, I began by seeing a computer program as a simple list of tasks for the computer to follow. I would write the logic of my first simple programs as a series of statements to be carried out in succession, like a check-list. Information, or so-called data, was passed around the program ecosystem, and procedures, or so-called functions, were things that manipulated the data. As a paradigm, this is called *Procedural Programming*.
 
-Years later, I heard of a different paradigm called *Object Oriented Programming* (OOP), which I began incorporating, though what it really meant eluded me until I began learning Ruby, a purely Object Oriented language. The implementation of Object Orientation is actually fairly simple. Conceptually, understanding the *why* of its significance, and using it effectively, is much more difficult, but when understood, is very powerful.
+Awhile later, I heard of a different paradigm called *Object Oriented Programming* (OOP), which I began incorporating, though what it really meant eluded me until I began learning Ruby, a purely Object Oriented language. The implementation of Object Orientation is actually fairly simple. Conceptually, understanding the *why* of its significance, and using it effectively, is much more difficult, but when understood, is very powerful.
 
 ![](https://10philosophycm.wikispaces.com/file/view/Platonic%20Forms%202.jpg/387085090/468x348/Platonic%20Forms%202.jpg)
 > Plato's Theory of Forms

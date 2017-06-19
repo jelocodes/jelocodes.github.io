@@ -25,7 +25,7 @@ Switching programming styles to Object Orientation is a powerful thing. Instead 
 
 Just as in the physical world, where discrete objects are comprised of both information about itself (for example, a tree is of a certain type, with specific-looking leaves) and actionable behaviour that it can perform (trees can turn sunlight into energy via photosynthesis, and they can grow in size), objects in code have data attributes comprised of the information about them, as well as functions, called methods, which enable their behaviour. Thus, data and methods, instead of being a mesh of discrete entities in Procedural Programming, exist simultaneously inside of objects in Object Oriented Programming. Methods, as messages, can then be sent from object to object, enabling their behaviour. 
 
-In Ruby, the blueprint for a type of object is called a Class. This is like the Platonic ideal of trees in-general, which encompass a tree's tree-ness: the overall idea of a tree. Each individual tree, like a Birch Tree, or a Maple Tree, or a Palm Tree, are Instances, derived from the Tree class. 
+In Ruby, the blueprint for a type of object is called a Class. This is like the 'Platonic Ideal' of trees in general, which encompass a tree's tree-ness: the overall idea of what a tree is. Each individual tree, like a Birch Tree, or a Maple Tree, or a Palm Tree, are Instances derived from the Tree class. 
 
 The following is a rather crude, but hopefully illustrative example of the concept:
 

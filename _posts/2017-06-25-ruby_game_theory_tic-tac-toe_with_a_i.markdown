@@ -17,19 +17,19 @@ Computer science and games have had a long and storied history. For awhile, huma
 
 To explain this, what is needed is a less vague explanation for how computers are able to 'win' at games other than subjective words like intelligence and consciousness. What is considerably less vague is the process of decision making (or functional intelligence), which can be modelled, and given enough information about the situation, programmed.
 
-Game theory is a branch of mathematics that deals with rational decision making. In zero-sum games (where one either only wins or loses), everything we do (or choose not to do) can be defined as behavioural outputs based on reactions to environmental inputs (in this case, the state of the game) to gain benefit or avoid cost.
+Game theory is the study of mathematical models that deals with rational decision making. In zero-sum games (where one either only wins or loses), everything we do (or choose not to do) can be defined as behavioural outputs based on reactions to environmental inputs (in this case, the state of the game) to gain benefit or avoid cost.
 
 ![](http://www.informationr.net/ir/9-4/p191fig3.gif)
-> A simple model of intelligent decision making by systems theorist E. Hartmann 
+> A simple model of intelligent decision making 
 
 Games are environmental models where there are relatively small, finite rulesets and possible outcomes. Therefore, we as programmers can encapsulate such rulesets and outcomes in our code for the computer to base its decisions on.
 
 The following is my first attempt at implementing my own somewhat convuluted but successful always winning strategy for a Tic-Tac-Toe A.I. (because, you know, Chess and Go have been done). How I did it:
 
-There is an algorithm called [Minimax](http://en.wikipedia.org/wiki/Minimax) that is used for minimizing the possible loss for a worst case scenario. It can also deal with making decisions based on procuring the maximum gains possible, in which it is called Maximin. It's pretty elegant, and it's formal definition is as follows:
+There is an algorithm called Minimax that is used for minimizing the possible loss for a worst case scenario. It can also deal with making decisions based on procuring the maximum gains possible, in which it is called Maximin. It's pretty elegant, and it's formal definition is as follows:
 
 ![](http://i.imgur.com/KbXF1Qv.png)
-> From Wikipedia
+> Via Wikipedia
 
 It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for wins and negative for losses) in order for the computer to calculate the least costly move to make (vᵢ). 
 

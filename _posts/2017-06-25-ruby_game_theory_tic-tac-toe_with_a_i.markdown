@@ -105,7 +105,7 @@ end
 The return value of this method is an array of the current board's state, each index of which directly corresponds to the same index in the WIN_COMBINATIONS array. This represents whether or not a win is imminent for that row, column or diagonal. For instance, the X's, O's or blanks in the following array that the #win_indexes method returns,
 
 ```
-  ==> [  ["X", " ", "X"],
+  ==> [ ["X", " ", "X"],
         [" ", " " , "O"],
         ["O", "X", " "],
         ["O", " ", " "],

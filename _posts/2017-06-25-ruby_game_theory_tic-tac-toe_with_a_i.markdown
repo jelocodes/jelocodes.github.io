@@ -59,7 +59,7 @@ An instance of a game is initialized via a Game class, and the behaviours of the
 
 Now, remember our A.I. needs to constantly check the state of the game board as to whether or not there is *almost* a winning scenario so it can either win or block. It does not need to check *all* of the possible cell combinations on the board, just the ones where win combinations can ever happen. 
 
-The Game class therefore contains a constant called WIN_COMBINATIONS that keeps track of, in each of its indexes, the board's cells that need to be filled by a row of similar tokens ("X" or "O") in order to achieve a win for each game (it contains all possible winning combination in either horizontal, vertical, or diagonal configurations).
+The Game class therefore contains a constant called WIN_COMBINATIONS that keeps track of, in each of its indexes, the board's cells that need to be filled by a row of similar tokens ("X" or "O") in order to achieve a win for each game (it contains all possible winning combinations in either horizontal, vertical, or diagonal configurations).
 
 ```
 WIN_COMBINATIONS =[
@@ -70,7 +70,7 @@ WIN_COMBINATIONS =[
      [2, 4, 6], #diagonal win
      [0, 3, 6], #vertical win
      [1, 4, 7], #vertical win
-     [2, 5, 8] #vertical win
+     [2, 5, 8]  #vertical win
  ]
 ```
 

@@ -41,8 +41,10 @@ A Tick-Tac-Toe board is a simple 3x3 board (9 squares or cells). My implementati
 class Board
     attr_accessor :cells
 		
-    def initialize
 		@cells = []
+		
+    def initialize
+	    self.reset!
         9.times{@cells << " "}
     end
 		
@@ -69,7 +71,7 @@ b.display
        |   |  
 ```
 
-A method was also written, which we won't describe here, for the board to be able to check the current state of each of it's cells (whether it's "X," "O" or blank), called #position.
+A method was also written, which we won't describe here, for the board to check the current state of each of it's cells (whether it's "X," "O" or blank), called #position.
 
 An instance of a game is initialized via a Game class, and the behaviours of the players are maintained by instances of Player classes. Two subclasses inherit from the Player class: Human and Computer, with the Computer holding the logic to behave autonomously based on an algorithm so that it never loses. 
 
@@ -170,12 +172,15 @@ Once it knows whether or not there is an *almost* winning condition for either i
 ```
 def win_or_block   
     winning_cell = @game.win_indexes[almost_won].index(" ")
+		...
 ```
 
 and then matching up that index with its corresponding board index via the Game class's WIN_COMBINATIONS constant (recalling that the #win_indexes index that the #almost_won method returns corresponds to the same index in the WIN_COMBINATIONS array): 
 
 ```
+    ...
     Game.win_combinations[almost_won][winning_cell]
+end		
 ```
 
 If there is no *almost* winning move, the program needs to make the next best possible move: the middle, followed by any of the corners, then any remaining available blank square on the board. Besides an immediate winning or losing condition, which is the first thing the A.I. should check for, the fallback optimal moves can be represented in an array 'optimal_moves.' 
@@ -197,4 +202,4 @@ def move(board)
 end
 ```
 
-Perhaps one day, I'll refactor the code some more to implement the Minimax algorithm. 
+Nothing magic. Perhaps one day, I'll refactor the code some more to implement the Minimax algorithm. 

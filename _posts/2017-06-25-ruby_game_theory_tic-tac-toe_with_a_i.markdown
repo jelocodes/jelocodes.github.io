@@ -29,7 +29,7 @@ The following is my first attempt at implementing my own somewhat convuluted but
 There is an algorithm called Minimax that is used for minimizing the possible loss for a worst case scenario. It can also deal with making decisions based on procuring the maximum gains possible (in which case it is called Maximin). It's pretty elegant, and it's formal definition is as follows:
 
 ![](http://i.imgur.com/KbXF1Qv.png)
-> via Wikipedia
+> Via Wikipedia
 
 It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for wins and negative for losses) in order for the computer to calculate the least costly move to make (vᵢ). 
 

@@ -39,9 +39,8 @@ A Tick-Tac-Toe board is a simple 3x3 board (9 squares or cells). My implementati
 
 ```
 class Board
-    attr_accessor :cells
-		
-		@cells = []
+    attr_reader :cells
+    @cells = []
 		
     def initialize
 	    self.reset!
@@ -57,7 +56,11 @@ class Board
     end
 		
 end
+```
 
+Thus,
+
+```
 b = Board.new
 
 b.cells

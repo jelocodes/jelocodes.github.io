@@ -94,7 +94,7 @@ To illustrate this, in a situation where there are all "X"s in the three indexes
        |   |  
 ```
 
-A method called #win_indexes checks what the current state is ("X," "O" or blank) of each of the board's cells corresponding to the numbers in the WIN_COMBINATIONS array by iterating through the array and, for each of the board's three cells in each of the array's indexes, uses the aforementioned #position method of the Board class to find that cell's current state in the board (whether it contains an "X," "O" or blank):
+A method called #win_indexes checks what the current state is ("X," "O" or blank) of each of the board's cells corresponding to the numbers in the WIN_COMBINATIONS array by iterating through the array and, for each of the board's cells in each of the array's indexes, uses the aforementioned #position method of the Board class to find that cell's current state in the board (whether it contains an "X," "O" or blank):
 
 ```
 def win_indexes

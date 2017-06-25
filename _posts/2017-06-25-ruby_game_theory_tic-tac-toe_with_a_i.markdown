@@ -7,7 +7,7 @@ date:   2017-06-24 21:52:28 -0400
 ![](https://i.ytimg.com/vi/6DGNZnfKYnU/hqdefault.jpg)
 > Computer from the film 'War Games,' 1983
 
-As an activity in putting Object Oriented Ruby into practice, I recently built an unbeatable game of Tic-Tac-Toe (represented by the robot Bender from Futurama to remind us of the impending machine uprising). Tic-Tac-Toe is one of my favourite games, though not to play. As a playable game it verges on boringly predictable, but as an illustrative model for games and decision making, it's elegant because it's really simple to model. In fact, the rule set is so basic and the game board so small that when one has learned the patterns, one can effectively never lose.
+As a project to put Object Oriented Ruby into practice, I recently built an unbeatable game of Tic-Tac-Toe (represented by the robot Bender from Futurama to remind us of the impending machine uprising). Tic-Tac-Toe is one of my favourite games, though not to play. As a playable game it verges on boringly predictable, but as an illustrative model for games and decision making, it's elegant because it's really simple to model. In fact, the rule set is so basic and the game board so small that when one has learned the patterns, one can effectively never lose.
 
 
 ![](http://i.imgur.com/QhgB5eJ.png?1)

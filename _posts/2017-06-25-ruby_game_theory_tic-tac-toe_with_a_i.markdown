@@ -29,14 +29,14 @@ The following is my attempt at implementing my own somewhat convuluted (but succ
 There is an algorithm called Minimax that is used for minimizing the possible loss for a worst case scenario. It can also deal with making decisions based on procuring the maximum gains possible (in which case it is called Maximin). It's pretty elegant, and it's formal definition is as follows:
 
 ![](http://i.imgur.com/KbXF1Qv.png)
-> Via Wikipedia
+> The Minimax algorithm, via Wikipedia
 
-It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for wins and negative for losses) in order for the computer to calculate the least costly move to make (vᵢ). 
+It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or, stated formally, all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for moves approaching a win or negative for moves approaching a loss) in order for the computer to calculate the value of the least costly move to make that turn (vᵢ). 
 
-My implementation of Tic-Tac-Toe did not have points allocated to moves (and I was too lazy to refactor). However, there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss’. Since the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states for point achievement), I figured Minimax point tracking wasn’t absolutely needed for my fast and dirty crack at the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of all potential scenarios *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation arises. 
+I built the logic of my Tic-Tac-Toe game before deciding to add an A.I. player, and my implementation did not have points allocated to moves (and I was too lazy to refactor). However, as there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss,' and the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states with different point achievements), I figured Minimax point tracking *per move* wasn’t absolutely needed for my fast and dirty approach to the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of all potential scenarios *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation presents itself. That knowledge is all the A.I. really needs to win, or, at the very least, not lose. It's moves the rest of the time are simple, as the middle and corner spots on the board are known to be strategically best (The only time where this won't work is when there are two potential near win situations on the board, but if the A.I. is trained to always block a single near win scenario the moment it occurs, then two near win scenarios will never happen).
 
 ![](http://i.imgur.com/OhRUULG.png)
-> Knowledge of all potential moves possible isn't necessary, just knowledge of when a win is imminent, and where to go in order to win or block
+> Knowledge of all potential possible moves isn't necessary, just the immediate knowledge of when a win is imminent, and where to go in order to win or block.
 
 A Tick-Tac-Toe board is a simple 3x3 board (9 squares or cells). My implementation of the game uses a Board class to display and keep track of all of the cells on the board. The state of each cell is represented as an array from index 0 to 8 (9 cells) mapped to the 9 cells on a game board, left to right, from index 0 being the very top left of the board, to index 8 being the very bottom right of the board. The #cells method shows the board's cell array, and the #display method shows the game board in it's current state. The board is initialized with 9 blank cells. 
 
@@ -62,7 +62,7 @@ An instance of a game is initialized via a Game class, and the behaviours of the
 
 Now, remember our A.I. needs to constantly check the state of the game board as to whether or not there is *almost* a winning scenario so it can either win or block. It does not need to check *all* of the possible cell combinations on the board, just the ones where win combinations can ever happen. 
 
-The Game class therefore contains a constant called WIN_COMBINATIONS that keeps track of, in each of its indexes, the board's cells that need to be filled by a row of similar tokens ("X" or "O") in order to achieve a win for each game (it contains all possible winning combinations in either horizontal, vertical, or diagonal configurations).
+The Game class therefore contains a constant called WIN_COMBINATIONS that keeps track of, in each of its indexes, the board's cells that need to be filled by a row of like-tokens (all X's or all O's) in order to achieve a win for each game (it contains all possible winning combinations in either horizontal, vertical, or diagonal configurations).
 
 ```
 WIN_COMBINATIONS =[
@@ -87,7 +87,7 @@ end
 
 This will come in handy later.)
 
-To illustrate this, in a situation where there are all "X"s in the three indexes in WIN_COMBINATION's first index, [0, 1, 2], the board looks like this:
+To illustrate this, in a situation where there are all "X"s in the three indexes stored in WIN_COMBINATION's first index, [0, 1, 2], the board looks like this:
 
 ```
      X | X | X  
@@ -133,9 +133,9 @@ WIN_COMBINATIONS =[
  ]
  ```
  
-The first "X" represents 0 on the board, the blank after it represents 1 on the board, the "X" after it represents 2, etc.
+The first "X" represents 0 on the board's cells array, the blank after it represents 1 on the board's cells array, the "X" after it represents 2, etc.
 
-To reiterate, both of the two arrays above represent the same board, except one has the actual tokens on the board ("X", "O" or blank), while the other has their representative indexes corresponding to the board's cells array (0-8). Because of this one to one relationship, other methods can refer to each of the two arrays (#win_indexes and WIN_COMBINATIONS) and find out information about the board.
+To reiterate, both of the two arrays above represent the same board, except one has the actual tokens on the board ("X", "O" or blank), while the other has their representative indexes corresponding to the board's cells array (0-8). Because of this one to one relationship, other methods can refer to each of the two arrays and find out information about the board.
  
 In the particular above case, a win is imminent in the top row of the board, where an 'X' is needed in the top-middle (or index 1 of the board's cells array) to win.
 

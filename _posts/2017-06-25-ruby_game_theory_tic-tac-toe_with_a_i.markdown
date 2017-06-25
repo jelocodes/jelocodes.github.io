@@ -35,28 +35,7 @@ It took awhile to really understand it, but essentially, the algorithm involves 
 
 My implementation of Tic-Tac-Toe did not have points allocated to moves (and I was too lazy to refactor), however, as there are only two real possible scoring outcomes in such a simple game: an 'absolute win' or 'absolute loss,' and the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states for point-achievement), I figured the Minimax point tracking wasn't *absolutely* needed for my first crack at the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of the board *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation arises. 
 
-A Tick-Tac-Toe board is a simple 3x3 board (9 squares or cells). My implementation of the game uses a Board class to display and keep track of all of the cells on the board. The state of each cell is represented as an array from index 0 to 8 (9 cells) mapped to the 9 cells on a game board, left to right, from index 0 being the very top left of the board, to index 8 being the very bottom right of the board. The board is initialized with 9 blank cells. 
-
-```
-class Board
-    attr_reader :cells
-    @cells = []
-		
-    def initialize
-	    self.reset!
-        9.times{@cells << " "}
-    end
-		
-    def display
-        puts " #{cells[0]} | #{cells[1]} | #{cells[2]} "
-        puts "-----------"
-        puts " #{cells[3]} | #{cells[4]} | #{cells[5]} "
-        puts "-----------"
-        puts " #{cells[6]} | #{cells[7]} | #{cells[8]} "
-    end
-		
-end
-```
+A Tick-Tac-Toe board is a simple 3x3 board (9 squares or cells). My implementation of the game uses a Board class to display and keep track of all of the cells on the board. The state of each cell is represented as an array from index 0 to 8 (9 cells) mapped to the 9 cells on a game board, left to right, from index 0 being the very top left of the board, to index 8 being the very bottom right of the board. The #cells method shows the board's cell array, and the #display method shows the game board in it's current state. The board is initialized with 9 blank cells. 
 
 Thus,
 
@@ -74,7 +53,7 @@ b.display
        |   |  
 ```
 
-A method was also written, which we won't describe here, for the board to check the current state of each of it's cells (whether it's "X," "O" or blank), called #position.
+A method was also written for the board to check the current state of each of it's cells (whether it's "X," "O" or blank), called #position.
 
 An instance of a game is initialized via a Game class, and the behaviours of the players are maintained by instances of Player classes. Two subclasses inherit from the Player class: Human and Computer, with the Computer holding the logic to behave autonomously based on an algorithm so that it never loses. 
 

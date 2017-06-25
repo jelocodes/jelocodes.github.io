@@ -33,7 +33,7 @@ There is an algorithm called Minimax that is used for minimizing the possible lo
 
 It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for wins and negative for losses) in order for the computer to calculate the least costly move to make (vᵢ). 
 
-My implementation of Tic-Tac-Toe did not have points allocated to moves (and I was too lazy to refactor). However, there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss’. Since the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states for point-achievement), I figured Minimax point tracking wasn’t *absolutely* needed for my first crack at the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of the board *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation arises. 
+My implementation of Tic-Tac-Toe did not have points allocated to moves (and I was too lazy to refactor). However, there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss’. Since the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states for point achievement), I figured Minimax point tracking wasn’t *absolutely* needed for my first crack at the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of the board *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation arises. 
 
 A Tick-Tac-Toe board is a simple 3x3 board (9 squares or cells). My implementation of the game uses a Board class to display and keep track of all of the cells on the board. The state of each cell is represented as an array from index 0 to 8 (9 cells) mapped to the 9 cells on a game board, left to right, from index 0 being the very top left of the board, to index 8 being the very bottom right of the board. The #cells method shows the board's cell array, and the #display method shows the game board in it's current state. The board is initialized with 9 blank cells. 
 
@@ -59,22 +59,22 @@ An instance of a game is initialized via a Game class, and the behaviours of the
 
 Now, remember our A.I. needs to constantly check the state of the game board as to whether or not there is *almost* a winning scenario so it can either win or block. It does not need to check *all* of the possible cell combinations on the board, just the ones where win combinations can ever happen. 
 
-The Game class therefore contains a constant called WIN_COMBINATIONS that keeps track of, in each of its indexes, the board's cells that need to be filled by a row of similar tokens ("X" or "O") in order to achieve a win for each game.
+The Game class therefore contains a constant called WIN_COMBINATIONS that keeps track of, in each of its indexes, the board's cells that need to be filled by a row of similar tokens ("X" or "O") in order to achieve a win for each game (it contains all possible winning combination in either horizontal, vertical, or diagonal configurations).
 
 ```
 WIN_COMBINATIONS =[
-     [0, 1, 2],
-     [3, 4, 5],
-     [6, 7, 8],
-     [0, 4, 8],
-     [2, 4, 6],
-     [0, 3, 6],
-     [1, 4, 7],
-     [2, 5, 8]
+     [0, 1, 2], #horizontal win
+     [3, 4, 5], #horizontal win
+     [6, 7, 8], #horizontal win
+     [0, 4, 8], #diagonal win
+     [2, 4, 6], #diagonal win
+     [0, 3, 6], #vertical win
+     [1, 4, 7], #vertical win
+     [2, 5, 8] #vertical win
  ]
 ```
 
-(Note: because this is a private constant, in order to expose this array to other instances (like the Player instances), a getter method is needed within the Game class:
+(Note: because this is a private constant, in order to expose this array to other instances (like the Player instances), a class getter method is needed within the Game class:
 
 ```
 def self.win_combinations
@@ -94,7 +94,7 @@ To illustrate this, in a situation where there are all "X"s in the three indexes
        |   |  
 ```
 
-A method called #win_indexes checks what the current state is ("X," "O" or blank) of each of the board's cells in the WIN_COMBINATIONS array by iterating through it and, for each of the board's three cells in each of the array's indexes, uses the aforementioned #position method of the Board class to find that cell's current state:
+A method called #win_indexes checks what the current state is ("X," "O" or blank) of each of the board's cells corresponding to the numbers in the WIN_COMBINATIONS array by iterating through the array and, for each of the board's three cells in each of the array's indexes, uses the aforementioned #position method of the Board class to find that cell's current state in the board (whether it contains an "X," "O" or blank):
 
 ```
 def win_indexes
@@ -102,20 +102,20 @@ def win_indexes
 end
 ```
 
-The return value of this method is an array of the current board's state, each index of which directly corresponds to the WIN_COMBINATIONS array, and represents whether or not a win is imminent. For instance, the X's or O's in the following array that the #win_indexes method returns:
+The return value of this method is an array of the current board's state, each index of which directly corresponds to the same index in the WIN_COMBINATIONS array. This represents whether or not a win is imminent for that row, column or diagonal. For instance, the X's, O's or blanks in the following array that the #win_indexes method returns,
 
 ```
-  ==>   ["X", " ", "X"],
+  ==> [  ["X", " ", "X"],
         [" ", " " , "O"],
         ["O", "X", " "],
         ["O", " ", " "],
         ["X", " ', " "],
         [" ", " ", "O"],
         [" ", " ", "X"],
-        ["X", "O", " "]
+        ["X", "O", " "] ]
 ```
 
-corresponds directly to the numerical positions in the WIN_COMBINATIONS array:
+corresponds directly to the numerical positions in the WIN_COMBINATIONS array, index for index:
 
 ```
 WIN_COMBINATIONS =[
@@ -130,13 +130,13 @@ WIN_COMBINATIONS =[
  ]
  ```
  
-The first "X" represents 0 on the board, etc.
+The first "X" represents 0 on the board, the blank after it represents 1 on the board, etc.
 
-Each of the two arrays above represent the same board, except one has the actual tokens on the board ("X" or "O"), while the other has their representative indexes corresponding to the board's cells array (0-8). This means each of the two arrays (#win_indexes and WIN_COMBINATIONS) can refer to each other and find out information about the board.
+To reiterate, both of the two arrays above represent the same board, except one has the actual tokens on the board ("X", "O" or blank), while the other has their representative indexes corresponding to the board's cells array (0-8). Because of this one to one relationship, other methods can refer to each of the two arrays (#win_indexes and WIN_COMBINATIONS) and find out information about the board.
  
-In the particular above case, a win is imminent in the top row of the board, where a middle 'X' (or index 1 of the board's cells array) is needed to win.
+In the particular above case, a win is imminent in the top row of the board, where an 'X' is needed in the top-middle (or index 1 of the board's cells array) to win.
 
-For the A.I. program to determine whether or not it's almost won, it needs to be aware of it's identity, as well as that of it's opponent's. An instance variable, called @token, representing either an "X" or "O", as well as a getter method to reveal this data, is necessary. Once that's in place, the A.I. can simply check each turn whether or not it's almost won by iterating through the win_indexes array and *detecting* whether one of those indexes matches an *almost* winning condition (e.g. XX-, -XX, or X-X) for it's own token. 
+For the A.I. to determine whether or not it's almost won, it needs to be aware of it's identity, as well as that of it's opponent's. An instance variable, called @token, representing either an "X" or "O", as well as a getter method to reveal this data, is necessary. Once that's in place, the A.I. can simply check each turn whether or not it, or it's opponent, has almost won, via a method called #almost_won. The method iterates through the #win_indexes array (which has the board's state (X's or O's) for each of the cells in the potential win combinations) and detects whether one of those indexes matches an *almost* winning condition (e.g. X X -, - X X, or X - X). 
 
 ```
 def almost_won
@@ -145,9 +145,11 @@ def almost_won
 end
 ```
 
-The method's return value is the index number of the matching *almost  won* condition. If there is no almost won condition, the method returns 'nil.' In the example above, because ["X", " ", "X"] of the #win_index array matches an almost won condition, the #almost_won method returns its index, or 0. Through a similar method, the A.I. can also detect whether or not its opponent has almost won. 
+The #almost_won method's return value is the index number of the matching *almost  won* condition in the array that the #win_index method returns. If there is no *almost won* condition, the method returns 'nil.' 
 
-Once it knows whether or not there is an *almost* winning condition for either itself or its opponent, it simply needs to make or block the winning move in the location that is required to win, which we can refer to as the 'winning cell'. We can obtain the location of this 'winning cell' by getting the index of whatever cell remains blank (" ") in the return value of the #almost_won method,
+In the example above, because ["X", " ", "X"] in the #win_index method's returned array matches an almost won condition, the #almost_won method returns it's index, 0. Through a similar method, the A.I. can also detect whether or not its opponent has almost won. 
+
+Once it knows whether or not there is an *almost* winning condition for either itself or its opponent, it simply needs to make or block the winning move in the location that is required to win, which we can refer to as the 'winning cell'. We can obtain the location of this 'winning cell' by first getting the index of whatever cell remains blank (" ") in the *almost winning* combination.  
 
 ```
 def win_or_block   
@@ -155,7 +157,9 @@ def win_or_block
 		...
 ```
 
-and then matching up that index with its corresponding location on the board. Recall that the indexes in the #win_indexes array represent the same places on the board that the indexes in the WIN_COMBINATIONS array represent. Therefore, the index '0' of the #win_indexes array ["X", " ", "X"] is representatively equal to the numbers in index '0' of the WIN_COMBINATIONS array [0, 1, 2], which are representative of positions on the board. We can use this relationship to get which cell on the board the winning cell belongs to:
+In the example above, the winning_cell would be 1, as the blank spot (" ") is in the 1st index of ["X", " ", "X"] ([0, 1, 2]).
+
+However, we still need to match that index with its corresponding location on the board. Recall that the indexes in the array returned by the #win_indexes method represent the same places on the board that the indexes in the WIN_COMBINATIONS array represent. Therefore, the index '0' of the #win_indexes array ["X", " ", "X"] is representatively equal to the numbers in index '0' of the WIN_COMBINATIONS array [0, 1, 2], which are representative of positions on the board. We can use this relationship to get which cell on the board the winning cell belongs to:
 
 ```
     ...
@@ -165,7 +169,7 @@ end
 
 The A.I. can then use this number to make its move. 
 
-If there is no *almost* winning move, the program needs to make the next best possible best move: the middle, followed by any of the corners, then any remaining available blank cells on the board. Besides an immediate winning or losing condition, which is the first thing the A.I. should check for, the fallback optimal moves can be represented in an array 'optimal_moves,' which the A.I. can iterate through for the next best move to make. 
+If there is no *almost* winning move, the program needs to make the next best possible move: the middle, followed by any of the corners, then any remaining available blank cells on the board. Besides an immediate winning or losing condition, which is the first thing the A.I. should check for, the fallback optimal moves can be represented in an array 'optimal_moves,' which the A.I. can then iterate through to decide the next best move to make. 
 
 ```
 optimal_moves = [5, 1, 3, 7, @game.board.cells.index(" ")]

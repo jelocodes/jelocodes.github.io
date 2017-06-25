@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ruby Game Theory: Tic-Tac-Toe with A.I."
-date:   2017-06-25 01:52:27 +0000
+date:   2017-06-24 21:52:28 -0400
 ---
 
 ![](https://i.ytimg.com/vi/6DGNZnfKYnU/hqdefault.jpg)
@@ -31,9 +31,9 @@ There is an algorithm called [Minimax](http://en.wikipedia.org/wiki/Minimax) tha
 ![](http://i.imgur.com/KbXF1Qv.png)
 > From Wikipedia
 
-It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for wins and negative for losses) in order for the computer to calculate the least costly or most costly move to make or avoid (vᵢ). 
+It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for wins and negative for losses) in order for the computer to calculate the least costly move to make (vᵢ). 
 
-My implementation of Tic-Tac-Toe did not have points allocated to moves (and I was too lazy to refactor), however, as there are only two real possible 'absolute win' or 'absolute loss' states in such a simple game, and the game is over *immediately* after such a state is achieved (instead of a continuum of best, better, worse or worst states for point-achievement), I figured the Minimax point tracking wasn't *absolutely* needed for my first crack at it: just an awareness of those two possible win-loss states, the knowledge of which informs the A.I. whether to go in for the win or to block when the situation arises. 
+My implementation of Tic-Tac-Toe did not have points allocated to moves (and I was too lazy to refactor), however, as there are only two real possible scoring outcomes in such a simple game: an 'absolute win' or 'absolute loss,' and the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states for point-achievement), I figured the Minimax point tracking wasn't *absolutely* needed for my first crack at the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of the board *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation arises. 
 
 A Tick-Tac-Toe board is a simple 3x3 board (9 squares or cells). My implementation of the game uses a Board class to display and keep track of all of the cells on the board. The state of each cell is represented as an array from index 0 to 8 (9 squares) mapped to the 9 squares on a game board, left to right, from index 0 being the very top left of the board, to index 8 being the very bottom right of the board. The board is initialized with 9 blank squares. 
 

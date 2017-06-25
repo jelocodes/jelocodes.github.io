@@ -33,7 +33,7 @@ There is an algorithm called Minimax that is used for minimizing the possible lo
 
 It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or, stated formally, all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for moves approaching a win or negative for moves approaching a loss) in order for the computer to calculate the value of the least costly move to make that turn (vᵢ). 
 
-I built the logic of my Tic-Tac-Toe game before deciding to add an A.I. player, and my implementation did not have points allocated to moves (and I was too lazy to refactor). However, as there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss,' and the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states with different point achievements), I figured Minimax point tracking *per move* wasn’t absolutely needed for my fast and dirty approach to the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of all potential scenarios *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation presents itself. That knowledge is all the A.I. really needs to win, or, at the very least, not lose. It's moves the rest of the time are simple, as the middle and corner spots on the board are known to be strategically best (The only time where this won't work is when there are two potential near win situations on the board, but if the A.I. is trained to always block a single near win scenario the moment it occurs, then two near win scenarios will never happen).
+I built the logic of my Tic-Tac-Toe game before deciding to add an A.I. player, and my implementation did not have points allocated to moves (I was too lazy to refactor). However, as there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss,' and the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states with different point achievements), I figured Minimax point tracking *per move* wasn’t absolutely needed for my fast and dirty approach to the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of all potential scenarios *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation presents itself. That knowledge is all the A.I. really needs to win, or, at the very least, not lose. It's moves the rest of the time are simple, as the middle and corner spots on the board are known to be strategically best (The only time where this won't work is when there are two potential near win situations on the board, but if the A.I. is trained to always block a single near win scenario the moment it occurs, then two near win scenarios will never happen).
 
 ![](http://i.imgur.com/OhRUULG.png)
 > Knowledge of all potential possible moves isn't necessary, just the immediate knowledge of when a win is imminent, and where to go in order to win or block.
@@ -56,7 +56,7 @@ b.display
        |   |  
 ```
 
-A method was also written for the Board class to check the current state of each of it's cells (whether it's "X," "O" or blank), called #position.
+A method was also written for the Board class to check the current state of each of it's cells (whether it's "X," "O" or blank), called #position, as well as a method to check whether or not a cell on the board was blank was valid to move into called #valid_move?
 
 An instance of a game is initialized via a Game class, and the behaviours of the players are maintained by instances of Player classes, which keeps track of the current game they belong to via a @game instance variable. Two subclasses inherit from the Player class: Human and Computer, with the Computer holding the logic to behave autonomously based on an algorithm so that it never loses. 
 
@@ -97,7 +97,7 @@ To illustrate this, in a situation where there are all "X"s in the three indexes
        |   |  
 ```
 
-A method called #win_indexes checks what the current state is ("X," "O" or blank) of each of the board's cells corresponding to the numbers in the WIN_COMBINATIONS array by iterating through the array and, for each of the board's cells in each of the array's indexes, uses the aforementioned #position method of the Board class to find that cell's current state in the board (whether it contains an "X," "O" or blank):
+A method called #win_indexes checks what the current state is ("X," "O" or blank) of each of the board's cells corresponding to the numbers in the WIN_COMBINATIONS array by iterating through the array and using the aforementioned #position method of the Board class to find that cell's current state in the board (whether it contains an "X," "O" or blank):
 
 ```
 def win_indexes
@@ -175,7 +175,7 @@ The A.I. can then use this returned integer value to make its move.
 If there is no *almost* winning move, the program needs to make the next best possible move: the middle, followed by any of the corners, then any remaining available blank cells on the board. Besides an immediate winning or losing condition, which is the first thing the A.I. should check for to block or win as soon as the opportunity presents itself, the fallback optimal moves can be represented in an array called 'optimal_moves,' which the A.I. can then iterate through to decide the next best move to make. 
 
 ```
-optimal_moves = [5, 1, 3, 7, @game.board.cells.index(" ")]
+optimal_moves = [4, 0, 2, 6, 8, @game.board.cells.index(" ")]
 ```
 
 This way, the A.I. is always scanning the board for either a winning or losing condition to achieve or prevent a win, and making the best strategic moves otherwise.

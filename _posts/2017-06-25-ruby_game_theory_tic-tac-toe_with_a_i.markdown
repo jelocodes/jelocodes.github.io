@@ -159,7 +159,7 @@ def win_or_block
 
 In the example above, the winning_cell would be 1, as the blank spot (" ") is in the 1st index of ["X", " ", "X"] ([0, 1, 2]).
 
-However, we still need to match that index with its corresponding location on the board. Recall that the indexes in the array returned by the #win_indexes method represent the same places on the board that the indexes in the WIN_COMBINATIONS array represent. Therefore, the index '0' of the #win_indexes array ["X", " ", "X"] is representatively equal to the numbers in index '0' of the WIN_COMBINATIONS array [0, 1, 2], which are representative of positions on the board. We can use this relationship to get which cell on the board the winning cell belongs to:
+However, we still need to match that index with its corresponding location on the board. Recall that the indexes in the array returned by the #win_indexes method represent the same places on the board that the indexes in the WIN_COMBINATIONS array represent. Therefore, the tokens in index '0' of the #win_indexes array ["X", " ", "X"] are representatively equal to the numbers in index '0' of the WIN_COMBINATIONS array [0, 1, 2], which are representative of positions on the board. By first using the #almost_won returned index to match the correct WIN_COMBINATION index, and then using the #winning_cell index to find where the blank space is on the game board, we can locate where the A.I. needs to move:
 
 ```
     ...
@@ -167,7 +167,7 @@ However, we still need to match that index with its corresponding location on th
 end		
 ```
 
-The A.I. can then use this number to make its move. 
+The A.I. can then use this returned integer value to make its move. 
 
 If there is no *almost* winning move, the program needs to make the next best possible move: the middle, followed by any of the corners, then any remaining available blank cells on the board. Besides an immediate winning or losing condition, which is the first thing the A.I. should check for, the fallback optimal moves can be represented in an array 'optimal_moves,' which the A.I. can then iterate through to decide the next best move to make. 
 

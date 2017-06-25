@@ -24,7 +24,7 @@ Game theory is the study of mathematical models that deals with rational decisio
 
 Games are environmental models where there are finite rulesets and possible outcomes. Therefore, we as programmers can encapsulate such rulesets and outcomes in our code for the computer to base its decisions on.
 
-The following is my first attempt at implementing my own somewhat convuluted but successful always winning strategy for a Tic-Tac-Toe A.I. (because, you know, Chess and Go have been done). How I did it:
+The following is my attempt at implementing my own somewhat convuluted (but successful) never losing Tic-Tac-Toe A.I. (because, you know, Chess and Go have been done). How I did it:
 
 There is an algorithm called Minimax that is used for minimizing the possible loss for a worst case scenario. It can also deal with making decisions based on procuring the maximum gains possible (in which case it is called Maximin). It's pretty elegant, and it's formal definition is as follows:
 

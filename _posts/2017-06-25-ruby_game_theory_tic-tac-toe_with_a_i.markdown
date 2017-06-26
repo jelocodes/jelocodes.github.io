@@ -7,7 +7,7 @@ date:   2017-06-24 21:52:28 -0400
 ![](https://i.ytimg.com/vi/6DGNZnfKYnU/hqdefault.jpg)
 > Computer from the film 'War Games,' 1983
 
-I recently built an unbeatable game of Tic-Tac-Toe (represented by the robot Bender from Futurama to remind us of the impending machine uprising). Tic-Tac-Toe is one of my favourite games, though not to play. As a playable game it verges on boringly predictable, but as an illustrative model for games and decision making, it's elegant because it's really simple to model. In fact, the rule set is so basic and the game board so small that when one has learned the patterns, one can effectively never lose.
+I recently built an (almost) unbeatable game of Tic-Tac-Toe (represented by the robot Bender from Futurama to remind us of the impending machine uprising). Tic-Tac-Toe is one of my favourite games, though not to play. As a playable game it verges on boringly predictable, but as an illustrative model for games and decision making, it's elegant because it's really simple to model. In fact, the rule set is so basic and the game board so small that when one has learned the patterns, one can effectively never lose.
 
 
 ![](http://i.imgur.com/QhgB5eJ.png?1)
@@ -24,7 +24,7 @@ Game theory is the study of mathematical models that deals with rational decisio
 
 Games are environmental models where there are finite rulesets and possible outcomes. Therefore, we as programmers can encapsulate such rulesets and outcomes in our code for the computer to base its decisions on.
 
-The following is my attempt at implementing my own somewhat convuluted (but successful) never losing Tic-Tac-Toe A.I. (because, you know, Chess and Go have been done). How I did it:
+The following is my attempt at implementing my own almost always winning Tic-Tac-Toe A.I. (because, you know, Chess and Go have been done). How I did it:
 
 There is an algorithm called Minimax that is used for minimizing the possible loss for a worst case scenario. It can also deal with making decisions based on procuring the maximum gains possible (in which case it is called Maximin). It's pretty elegant, and it's formal definition is as follows:
 
@@ -33,10 +33,10 @@ There is an algorithm called Minimax that is used for minimizing the possible lo
 
 It took awhile to really understand it, but essentially, the algorithm involves keeping track of all potential moves that can be made based on the current state of the game (or, stated formally, all cumulative actions made by the opponent up to this point: a₋ᵢ), and then making the move that would be least costly compared to all the rest (aᵢ). It implements a score counter system, which assigns a numerical point for each possible move (either positive for moves approaching a win or negative for moves approaching a loss) in order for the computer to calculate the value of the least costly move to make that turn (vᵢ). 
 
-I built the logic of my Tic-Tac-Toe game before deciding to add an A.I. player, and my implementation did not have points allocated to moves (I was too lazy to refactor). However, as there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss,' and the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states with different point achievements), I figured Minimax per move point tracking wasn’t needed for my fast and dirty approach to the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of all situations *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation presents itself. 
+I built the logic of my Tic-Tac-Toe game before deciding to add an A.I. player, and my implementation did not have points allocated to moves (I was too lazy to refactor). I decided to see if there was a way to implement some A.I. logic without having to refactor everything. What dawned on me is that there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss.' The game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states with different point achievements), so I figured Minimax per move point tracking wasn’t needed for my first crack at the problem. Instead, just a general awareness of those two possible win/loss states would do, or rather, an awareness of all situations *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation presents itself. 
 
 ![](http://i.imgur.com/OhRUULG.png)
-> Knowledge of all potential possible moves isn't necessary, just the immediate knowledge of when a win is imminent, and where to go in order to win or block.
+> Knowledge of all potential possible moves won't be necessary, just the immediate knowledge of when a win is imminent, and where to go in order to win or block.
 
 A Tick-Tac-Toe board is a simple 3x3 board (9 squares or cells). My implementation of the game uses a Board class to display and keep track of all of the cells on the board. The state of each cell is represented as an array from index 0 to 8 (9 cells) mapped to the 9 cells on a game board, left to right, from index 0 being the very top left of the board, to index 8 being the very bottom right of the board. The #cells method shows the board's cell array, and the #display method shows the game board in it's current state. The board is initialized with 9 blank cells. 
 
@@ -172,15 +172,11 @@ end
 
 The A.I. can then use this returned integer value to make its move. 
 
-If there is no *almost* winning move, the program needs to make the next best possible move, represented in an array called 'optimal_moves,' which the A.I. can then iterate through to decide the next best move to make. 
-
-```
-optimal_moves = [4, 0, 2, 6, 8, @game.board.cells.index(" ")]
-```
+If there is no *almost* winning move, the program needs to make the next best possible move, which can be represented in an array called 'optimal_moves.' The A.I. can then iterate through this array to decide the next best move to make. 
 
 This way, the A.I. is always scanning the board for either a winning or losing condition to achieve or prevent a win, and making the best strategic moves otherwise.
 
-After some refactoring, here's the final A.I. #move method for my implementation of an unbeatable Tic-Tac-Toe bot. It takes the current board as an argument, and then implements the methods above to make its move:
+After some refactoring, here's the final A.I. #move method for my Tic-Tac-Toe bot. It takes the current board as an argument, and then implements the methods above to make its move:
 
 ```
 def move(board)
@@ -191,4 +187,4 @@ def move(board)
 end
 ```
 
-Nothing magic, only logic, but it's not perfect. There is a chance the A.I. gets confused when two possible win conditions are present on the board. Perhaps one day, I'll refactor the A.I. some more to implement the Minimax algorithm, but until then, it remains the reigning champ. 
+Nothing magic, only logic. It's not perfect. There is a chance that the A.I. gets confused when two possible win conditions are present on the board at once. Perhaps one day, I'll refactor the A.I. some more to implement the Minimax algorithm, but until then, it remains the reigning champ. 

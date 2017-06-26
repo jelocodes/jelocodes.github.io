@@ -56,7 +56,7 @@ b.display
        |   |  
 ```
 
-A method was also written for the Board class to check the current state of each of it's cells (whether it's "X," "O" or blank), called #position, as well as a method to check whether or not a cell on the board was blank was valid to move into called #valid_move?
+A method was also written for the Board class to check the current state of each of it's cells (whether it's "X," "O" or blank), called #position, as well as a method to check whether or not a cell on the board is valid place for a player to move into, called #valid_move?
 
 An instance of a game is initialized via a Game class, and the behaviours of the players are maintained by instances of Player classes, which keeps track of the current game they belong to via a @game instance variable. Two subclasses inherit from the Player class: Human and Computer, with the Computer holding the logic to behave autonomously based on an algorithm so that it never loses. 
 

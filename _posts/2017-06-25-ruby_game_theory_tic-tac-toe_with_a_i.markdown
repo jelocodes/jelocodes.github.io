@@ -35,8 +35,6 @@ It took awhile to really understand it, but essentially, the algorithm involves 
 
 I built the logic of my Tic-Tac-Toe game before deciding to add an A.I. player, and my implementation did not have points allocated to moves (I was too lazy to refactor). However, as there are only two real possible scoring outcomes in such a simple game: An ‘absolute win’ or ‘absolute loss,' and the game is over *immediately* after either of the two is achieved (instead of a continuum of worst, worse, better or best states with different point achievements), I figured Minimax per move point tracking wasn’t needed for my fast and dirty approach to the problem. Instead, just a general awareness of those two possible win/loss states are required, or rather, an awareness of all situations *just before* one of those states is achieved is required, which informs the A.I. whether to go in for the win or to block the opponent's win when the situation presents itself. 
 
-This knowledge is all the A.I. really needs to win, or, at the very least, not lose. Moving the rest of the time is simple, as the middle and corner spots on the board are known to be strategically best. The only time where the strategy won't work is when there are two potential near win situations on the board, but if the A.I. is trained to always block a single near win scenario the moment it occurs, then two near win scenarios will never happen.
-
 ![](http://i.imgur.com/OhRUULG.png)
 > Knowledge of all potential possible moves isn't necessary, just the immediate knowledge of when a win is imminent, and where to go in order to win or block.
 
@@ -174,7 +172,7 @@ end
 
 The A.I. can then use this returned integer value to make its move. 
 
-If there is no *almost* winning move, the program needs to make the next best possible move: the middle, followed by any of the corners, then any remaining available blank cells on the board. Besides an immediate winning or losing condition, which is the first thing the A.I. should check for to block or win as soon as the opportunity presents itself, the fallback optimal moves can be represented in an array called 'optimal_moves,' which the A.I. can then iterate through to decide the next best move to make. 
+If there is no *almost* winning move, the program needs to make the next best possible move, represented in an array called 'optimal_moves,' which the A.I. can then iterate through to decide the next best move to make. 
 
 ```
 optimal_moves = [4, 0, 2, 6, 8, @game.board.cells.index(" ")]
@@ -193,4 +191,4 @@ def move(board)
 end
 ```
 
-Nothing magic, only logic. Perhaps one day, I'll refactor the A.I. some more to implement the Minimax algorithm, but until then, it remains the reigning champ. 
+Nothing magic, only logic, but it's not perfect. There is a chance the A.I. gets confused when two possible win conditions are present on the board. Perhaps one day, I'll refactor the A.I. some more to implement the Minimax algorithm, but until then, it remains the reigning champ. 

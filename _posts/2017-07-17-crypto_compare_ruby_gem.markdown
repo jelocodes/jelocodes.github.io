@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "21st Century Coins and Gems: Crypto Compare"
+title:  "Crypto Compare: A Ruby Gem to Track Crypto Currency Valuations"
 date:   2017-07-17 12:12:43 -0400
 ---
 
@@ -11,11 +11,11 @@ According to [various](http://dollardaze.org/blog/) [sources](http://www.straigh
 
 ![](http://imgur.com/rSDcdit.png)
 
-In this modern reality of an increasingly cashless world, and on the heels of the 2008 U.S. recession and growing distrust for centralized banking systems, an unknown programmer (or group of programmers) under the alias of Satoshi Nakamoto released an open-source software called Bitcoin, which was the next logical step in this procedure: a fully digital currency, or, as it became known, a *crypto currency*. Unbeknownst to the world then, Bitcoin, and the underlying peer-to-peer cryptographically encrypted technology powering it, the Blockchain, would reach a multi billion dollar market cap and spawn dozens of so-called alternative coins, or "altcoins," all leveraging the same underlying technology. 
+In this modern reality of an increasingly cashless world, and on the heels of the 2008 U.S. recession and growing distrust for centralized banking systems, an unknown programmer (or group of programmers) under the alias of Satoshi Nakamoto released an open-source software called Bitcoin, which was the next logical step in this trend: a bankless, *fully* digital currency, or, as it became known, a crypto currency. Unbeknownst to the world then, Bitcoin, and the underlying peer-to-peer cryptographically encrypted technology powering it, the Blockchain, would reach a multi billion dollar market cap and spawn dozens of so-called alternative coins, or "altcoins," all leveraging the same underlying technology. 
 
 After the inception of Bitcoin, a multitude of altcoins arrived to try and solve different problems in finance and and carve out niches for themselves. One such coin, Ether, powers a platform called [Ethereum](https://www.ethereum.org/), which has all of what the Bitcoin network offers, with an added general programming language built on top of their Blockchain. This means that complex logic can be programmed on top of the Ethereum network, potentially leveraging the network to not simply facilitate simple transactions, but to host and enable entire *decentralized* software applications! Then there's [Grantcoin](http://www.grantcoin.org/), a cryptocurrency that's fuelling a global digital basic income fund.
 
-The above should give you an idea as to why there's a lot of interest in this tech, it's disruptive nature and what it can potentially mean for the future of our economy. I've even invested in some crypto myself. 
+The above should give you an idea as to why there's a lot of interest in this tech, it's disruptive nature and what it can potentially mean for the future of economics. I've even invested in some crypto myself. 
 
 Finding information on the crypto I'm currently holding however has been pretty cumbersome. Luckily, aggregator websites have sprung up that hold multiple cryptocurrency price valuations all on a single webpage. One such website is Coinmarketcap.com, which has (from what I can tell) all cryptocurrencies indexed, ordered from highest to lowest market cap, with various information in USD. Great! However, I'd still need to open up a web browser, scroll down a lengthy list or do a manual search for the cryptocurrency I want out of hundreds of possible choices. What's needed is a way to organize the growing crypto currency data into an easily readable concise format. 
 

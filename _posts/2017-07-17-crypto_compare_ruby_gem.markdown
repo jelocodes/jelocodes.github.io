@@ -1,13 +1,11 @@
 ---
 layout: post
-title:  "Crypto Compare Ruby Gem"
+title:  "21st Century Coins and Gems: Crypto Compare"
 date:   2017-07-17 12:12:43 -0400
 ---
 
 ![](http://i.imgur.com/170Govo.jpg)
 > Which is more real? The currency on or off screen?
-
-### Cash Rules Everything Around Me?
 
 According to [various](http://dollardaze.org/blog/) [sources](http://www.straightdope.com/columns/read/719/how-much-money-is-there), the total aggregate of all coins and bank notes (i.e. cash) in the world, in all fiat currencies, exceeds 5 trillion US dollars. This is referred to by economists as liquid money or 'M0'. However, this is less than 10% of all of the money in the world. The rest is created through banks, from the central banks down to commercial banks, via a system called [fractonal reserve banking](https://en.wikipedia.org/wiki/Fractional-reserve_banking), which is how banks increase their money supply to lend out to borrowers. Greatly simplified, it means that for every deposit that customers make to banks (referred to in-part as 'M2'), so long as the banks keep a fraction of that deposit in their savings, for lending purposes, they can electronically update their records with up to 90% more than that initial deposit. This is referred to as 'M1'. Out of the three, only M0, or 10%, is physical cash.  This means that most of the money in the world economy, around 90%, is purely digital. What people commonly think of as money, paper bills and metal coins, is actually just a metaphor. Presently, money is in a great part simply records stored in databases in financial computer systems worldwide. 
 
@@ -24,9 +22,6 @@ Finding information on the crypto I'm currently holding however has been pretty 
 ![](http://i.imgur.com/VxI4HdI.png?1)
 > Coinmarketcap.com's homepage, listing all cryptocurrencies by market cap
 
-
-### A Gem for Tracking Coins
-
 What if we could access all of this information directly in our command line without ever opening a browser? Maybe with a bit of Ruby cleverness I could make it happen through a searchable Command Line Interface (CLI), abstracting away all of the superfluity and instead just displaying the direct information that we want. Except, well, not everybody lives in America. A useful feature would also be currency converstion, where information on specific cryptocurrency valuations could be expressed to the user in any major fiat currency of the user's choosing, not just USD.
 
 The domain model for this could be looked at like a foreign currency exchange centre. The main object classes could be:
@@ -37,14 +32,7 @@ The domain model for this could be looked at like a foreign currency exchange ce
 
 First task: scraping the information we need from the website. Luckily, a handy Ruby gem called 'Nokogiri' takes care of the scraping. Combined with Ruby's built-in 'open-uri,' we can get the page information. This task is facilitated by the aforementioned Scraper class. Because the doc may need to be used by other methods, let's put it in an instance variable. And as the app only scrapes from one website and each instance will be the same site data, we can automatically initialize each Scraper instance with the instance variable @page pointing to the Nokogiri doc containing the scraped site information. 
 
-```
-class Scraper
-	attr_reader :page
-
-	def initialize
-		@page = Nokogiri::HTML(open("http://coinmarketcap.com/"))
-	end
-```
+![](http://i.imgur.com/Z8ZDrUr.png?1)
 
 An issue with Cryptocurrency websites is the sheer volume of information packed on the page, which obfuscates the information the user wants. What if specific coins can be searchable on the CLI, and show only the selected user coin info? That sounds like a good idea, but it might also be nice to have a *limited* selection of coins presented to the user in a list-view, perhaps of the 10 most popular (by market cap) cryptocurrencies, and leave it up to the user to pick from this list or enter their own more niche coin search. Let's scrape the Nokogiri doc for the names of the top 10 cryptocurrencies on the website.
 
@@ -52,23 +40,11 @@ Dev tools tells us that the CSS selector for each crypto currency name is the te
 
 Let's create a method #get_list, that scrapes the top 10 crypto currency names into an array. 
 
-```
- 	def get_list
-        list = []
-        @page.css("td.currency-name a").each {|crypto| list << crypto.text.downcase.gsub(" ","-") if list.size 
-	    < 10 }
-        list
-     end
-```
+![](http://i.imgur.com/aHhThcS.png?1)
 
 Sandwich code can be avoided via a collect enumerator instead, while keeping track of the index numbers of the items collected to only collect the names of the first 10 cryptocurrencies as well as deleting all of the nil indexes.
 
-```
-	 def get_list
-		  @page.css("td.currency-name a" ).enum_for(:each_with_index).collect {|crypto, index| 
-	      crypto.text.downcase.gsub(" ","-") if index <= 9 }.compact
-	 end
-```
+![](http://i.imgur.com/ez3xF8M.png?1)
 
 Great, now we have a list of the top 10 crypto currencies by name. However, at this point, each index simply contains a string that knows nothing about itself. They're not yet CryptoCurrency objects. 
 
@@ -83,20 +59,7 @@ Taken as a whole, this data gives a fairly top level, concise impression of how 
 
 Using dev tools, we find that the attributes for specific crypto currencies is within the "id" tags of ids named 'id-that-cryptocurrency's-name,' the name of which we can represent as a method argument 'crypto_currency.' We also get rid of or minimize odd whitespace with gsub.
 
-```
-	def get_attributes(crypto_currency)
-		data = {}
-		data["name"] = crypto_currency 
-		data["price"] = @page.css("tr#id-#{crypto_currency} td.no-wrap a.price").text
-		data["market_cap"] = @page.css("tr#id-#{crypto_currency} td.market-cap").text.gsub(/\s+/, "")
-		data["circulating_supply"] = @page.css("tr#id-#{crypto_currency} td.no-wrap 
-		a[target='_blank']").text.gsub(/\s+/, " ")
-		data["percent_change"] = @page.css("tr#id-#{crypto_currency} td.percent-24h").text
-		data
-	end
-	
-end
-```
+![](http://i.imgur.com/asXeU8v.png?1)
 
 This ends our Scraper class. 
 
@@ -108,84 +71,31 @@ Let's create attr_accessors for all of the relevant data that we scraped with ou
 
 Let's also create a class variable called @@all to store all of the new CryptoCurrency objects created in an array, as well as enable the pushing of new instances of crypto currencies to this array if it isn't already present in the collection (we don't want repeat crypto currencies).
 
-```
-class CryptoCurrency
-	attr_accessor :name, :price, :market_cap, :circulating_supply, :volume, :percent_change
-	
-	def initialize(data)
-		data.each{|key,value| self.send("#{key}=",value)} 
-		@@all << self if !@@all.detect {|crypto| crypto.name == self.name}
-	end	
-	
-```
+![](http://i.imgur.com/s20AXI9.png?1)
 
 Great! Now by passing in the return value of the Scraper class's #get_attributes method, we can instantiate a new CryptoCurrency object with appropriate data for our chosen attributes. Seeing as we have a method to scrape the attributes of a specific crypto currency by name, and a way to use those attributes to instantiate CryptoCurrency objects, we can now use these methods to instantiate new CryptoCurrency objects for each crypto currency name listed in our top 10 list from earlier.
 
-```
-	def self.make_crypto_from_list(list, scraper)
-		 list.each {|crypto| CryptoCurrency.new(scraper.get_attributes(crypto))}
-		 self.all
-	end
-```
-
-Lastly, a class method to reveal all of the crypto objects created is as follows:
-
-```
-	def self.all
-		@@all
-	end
-	
-end
-```
+![](http://i.imgur.com/6oz2DS6.png?1)
 
 Now we can instantiate any crypto currency we want as an instance of the CryptoCurrency class, with its price in USD, as scraped from our target website. But what about the users that aren't Americans? Luckily, we don't have to reinvent the wheel as a Gem called 'Ruby Money' can do the heavy lifting for us. 
 
 Ruby Money is a library that has a Money class to represent information about a certain *amount* of money, including what type of currency it is, and what its value is. It also has a Currency class to encapsulate information about a particular type of fiat currency. Note that Ruby Money takes money amounts in cents, thus any amount in USD must be multiplied by 100 to be represented accurately.  
 
-```
-require 'money'
-
-# 10.00 USD
-money = Money.new(1000, "USD")
-money.cents     #=> 1000
-money.currency  #=> Currency.new("USD")
-```
+![](http://i.imgur.com/M9kxyYW.png?1)
 
 Finally, converting money amounts from one currency to another is performed by a Bank object, which has logic comparing Money objects based on their Currency type. You can add different rates to via a method called #add_rate so the Bank object knows what the exchange rate is between the different Currency objects. 
 
 Google Currency, a library that extends Ruby Money, gives us access to the exchange rates for all major fiat currencies represented by their global ISO codes (e.g. USD, CAD, GBP), based on Google's online listings scraped from [Google Finance Converter](https://www.google.com/finance/converter). This saves us the effort of researching and creating their rates from scratch. Google Currency's #exchange_to method allows us to convert currency valuations like so:
 
-```
-money.exchange_to(:EUR)
-```
+![](http://i.imgur.com/fSwtzJL.png?1)
 
 Now that we have all of the objects, methods and gems needed for our application, we can program the app logic in a CLI object, which passes around data from all of our other domain objects in order to display the relevant information to the user. 
 
 Greatly simplified and presented without its full context, the basic logic of the CLI class is that we can convert our scraped in-USD cryptocurrency price valuations, instantiate them as new "USD" Money objects, then convert those objects to the user's entered fiat currency of choice using Ruby Money.
 
-```
-class CLI
-        # a bunch of stuff...
-
-        @price = Money.new("#{@crypto_currency.price}".delete("$").to_f*100, "USD")
+![](http://i.imgur.com/DHf85ac.png?1)
 		
-        def set_base_currency
-	        puts "Please enter your fiat currency of interest's ISO code (e.g. USD, CAD, GBP, JPY, etc.):"
-	        @base_currency = gets.upcase.chomp.to_sym
-
-	        if Money::Currency.include?(@base_currency) == false
-		        puts "No such fiat currency found."
-		        set_base_currency
-	        end
-        end	
-
-        @price.exchange_to(@base_currency)
-
-        # a bunch of other stuff...			
-end
-```
-		
-After much refactoring and testing, a beta version of the CLI application was built into a Ruby Gem and uploaded for the community to use as the awesomely alliterated [Crypto Compare](https://rubygems.org/gems/crypto_compare). You can check out the source code, submit bugs, fork and improve the Gem [here](https://github.com/jelocodes/crypto-compare-gem).
+After much refactoring and testing, a beta version of the CLI application was built into a Ruby Gem and published at RubyGems.org for community use, aptly named [Crypto Compare](https://rubygems.org/gems/crypto_compare). You can check out the source code, submit bugs, fork and improve the Gem [here](https://github.com/jelocodes/crypto-compare-gem).
 
 Now when I want to check my crypto investments, I just open up the terminal and within a few keystrokes, I have my data. The time this saves is, well, priceless.
 

@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  "Crypto Compare Ruby Gem"
-date:   2017-07-17 16:12:42 +0000
+date:   2017-07-17 12:12:43 -0400
 ---
 
 ![](http://i.imgur.com/170Govo.jpg)
 > Which is more real? The currency on or off screen?
 
-##### Cash Rules Everything Around Me?
+### Cash Rules Everything Around Me?
 
 According to [various](http://dollardaze.org/blog/) [sources](http://www.straightdope.com/columns/read/719/how-much-money-is-there), the total aggregate of all coins and bank notes (i.e. cash) in the world, in all fiat currencies, exceeds 5 trillion US dollars. This is referred to by economists as liquid money or 'M0'. However, this is less than 10% of all of the money in the world. The rest is created through banks, from the central banks down to commercial banks, via a system called [fractonal reserve banking](https://en.wikipedia.org/wiki/Fractional-reserve_banking), which is how banks increase their money supply to lend out to borrowers. Greatly simplified, it means that for every deposit that customers make to banks (referred to in-part as 'M2'), so long as the banks keep a fraction of that deposit in their savings, for lending purposes, they can electronically update their records with up to 90% more than that initial deposit. This is referred to as 'M1'. Out of the three, only M0, or 10%, is physical cash.  This means that most of the money in the world economy, around 90%, is purely digital. What people commonly think of as money, paper bills and metal coins, is actually just a metaphor. Presently, money is in a great part simply records stored in databases in financial computer systems worldwide. 
 
@@ -25,7 +25,7 @@ Finding information on the crypto I'm currently holding however has been pretty 
 > Coinmarketcap.com's homepage, listing all cryptocurrencies by market cap
 
 
-##### A Gem for Tracking Coins
+### A Gem for Tracking Coins
 
 What if we could access all of this information directly in our command line without ever opening a browser? Maybe with a bit of Ruby cleverness I could make it happen through a searchable Command Line Interface (CLI), abstracting away all of the superfluity and instead just displaying the direct information that we want. Except, well, not everybody lives in America. A useful feature would also be currency converstion, where information on specific cryptocurrency valuations could be expressed to the user in any major fiat currency of the user's choosing, not just USD.
 

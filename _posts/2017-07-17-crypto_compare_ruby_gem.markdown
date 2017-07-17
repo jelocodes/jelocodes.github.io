@@ -95,7 +95,7 @@ Greatly simplified and presented without its full context, the basic logic of th
 		
 After much refactoring and testing, a beta version of the CLI application was packed into a Gem and published at RubyGems.org for community use, aptly named [Crypto Compare](https://rubygems.org/gems/crypto_compare). You can check out the source code, submit bugs, fork, and improve the Gem there. 
 
-Now when I want to check my crypto investments, I just open up the terminal and within a few keystrokes, I have my data. The time this saves is, well, priceless.
+Time will tell if this tech pans out, but now when I want to check my crypto investments, I just open up the terminal and within a few keystrokes, I have my data. The time this saves is, well, priceless.
 
 You can watch a walkthrough of the CLI in action below:
 

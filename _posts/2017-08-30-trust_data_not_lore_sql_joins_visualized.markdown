@@ -19,7 +19,7 @@ From the neurons in our brains that imagine these objects and interrelations, to
 
 One philosophical view could be that it's all just information out there, and SQL (Structured Query Languae) gives us a way to programmatically organize and see connections between different tables or groupings of information. That's pretty cool, especially when we zoom back in and realize that our job as developers is to be masters of information and data. We create *context* and map *relationships* out of data (information) in order to bring function and order to our software applications. 
 
-In programming, this is primarily done via tables (in databases) and the SQL language. Many novice programmers, including myself starting out, get confused when first learning SQL and how exactly to query specific information from tables in a database. Tables represent sets of information about specific domains, and the results of 'join queries' in SQL represent the interrelatedness of elements between these domains.
+Many novice programmers, including myself starting out, get confused when first learning SQL and how exactly to query specific information from tables in a database. Tables represent sets of information about specific domains, and the results of 'join queries' in SQL represent the interrelatedness of elements between these domains.
 
 From Ligaya Turmelle's great [blog post](http://www.khankennels.com/blog/index.php/archives/2007/04/20/getting-joins/), we have our example universe of information: two data sets visualized in the form of circles in a venn diagram, each circle representing a table (Table 1 (T1) and Table 2 (T2)) and all the records within:
 

@@ -17,7 +17,7 @@ From the neurons in our brains that imagine these objects and interrelations, to
 
 ![](https://lh3.googleusercontent.com/-Oscj5uMcXjI/VZJJviwnVhI/AAAAAAAAC6U/5tgUX2CHFUc/w530-h502-p-rw/FB_IMG_1435602576152.jpg)
 
-One philosophical view could be that it's all just information out there, and SQL (Structured Query Languae) gives us a way to programmatically organize and see connections between different tables or groupings of information. That's pretty cool, especially when we zoom back in and realize that our job as developers is to be masters of information and data. We create *context* and map *relationships* out of data (information) in order to bring function and order to our software applications. 
+One philosophical view could be that it's all just information out there, and SQL (Structured Query Language) gives us a way to programmatically organize and see connections between different tables or groupings of information. That's pretty cool, especially when we zoom back in and realize that our job as developers is to be masters of information and data. We create *context* and map *relationships* out of data (information) in order to bring function and order to our software applications. 
 
 Many novice programmers, including myself starting out, get confused when first learning SQL and how exactly to query specific information from tables in a database. Tables represent sets of information about specific domains, and the results of 'join queries' in SQL represent the interrelatedness of elements between these domains.
 

@@ -5,7 +5,7 @@ date:   2017-08-30 19:59:13 -0400
 ---
 
 ![](https://68.media.tumblr.com/52c04c960042f7e614e36fce0833f995/tumblr_oow3quxpdg1swxsyto2_500.jpg)
-> Star Trek The Next Generation giving sound life advice.
+> Sound advice from Star Trek The Next Generation.
 
 Quoting a very cool [YouTube video](https://www.youtube.com/watch?v=yWO-cvGETRQ) by Kurazgesagt, *"When it comes down to it, information is nothing tangible. It's typically understood as the property of the arrangement of particles."* 
 

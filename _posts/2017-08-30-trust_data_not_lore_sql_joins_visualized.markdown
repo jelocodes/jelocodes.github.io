@@ -79,7 +79,7 @@ null  null     1     Picard
 null  null     3     Neuron
 ```
 
-A **left join** query returns all of the records in the first (left) table whether or not they have a match or not, but if they do have a match, return the matching record on the right table as well. 
+A **left join** query returns all of the records in the first (left) table whether or not they have a match or not, but if they do have a match, returns the matching record on the right table as well. 
 
 ![](http://www.khankennels.com/blog/wp-content/uploads/2007/04/left_venn.png)
 

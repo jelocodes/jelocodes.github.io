@@ -96,4 +96,4 @@ Repeatedly visualizing each SQL join I had to make helped clarify them for me wh
 
 When organized properly, we can trust data, and information's relationship to other data gives us context and a narrative. 
 
-Learning SQL and organizing data helps us make sense of a complicated universe, whether in a computer program or in reality, which is, perhaps in and of itself, all just information. 
+Learning SQL and organizing data helps us make sense of a complicated universe, whether in a computer program or in reality, which is, perhaps in and of itself, in the end, all just information. 

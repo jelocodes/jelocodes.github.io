@@ -9,7 +9,7 @@ In learning how to program, I've amassed a bunch of old code lying around from p
 
 The basis of the app includes work by Deborah Chan, a friend and collaborator from a few years back, and bohemian coder and mentor Drew Minns. It uses the [Yummly](http://yummly.com) API to fetch recipe objects from the Yummly database, which contains all of Yummly's user-created recipes. It was abandoned some years ago and the codebase unmaintained. 
 
-Essentially, the goal for my new version is to make use of user's leftovers as well - albeit not code, but food - by generating recipes for them containing their inputted food. Users can input any leftover food that they want, and the app should generate recipes based on that input. It's like placing scraps of leftover food in a blender and coming out with something tasty: thus the name "Scrap Sauce." 
+Essentially, the goal for my new version is to make use of user's leftovers as well - albeit not code, but food - by generating recipes containing their inputted food. Users can input any leftover food that they want, and the app should generate recipes based on that input. It's like placing scraps of leftover food in a blender and coming out with something tasty: thus the name "Scrap Sauce." 
 
 The app takes input from the user via an input form: "addField."
 

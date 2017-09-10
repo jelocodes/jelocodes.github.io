@@ -23,7 +23,7 @@ The app takes input from the user via an input field: "addField."
 </p>
 ```
 
-jQuery is then used to target the 'add button', which brings up the input field. It listens for a keypress and then pushes the inputted ingredients into a DOM Array (scrapSauce.ingredients).
+jQuery is used to target the 'add button', which brings up the input field. It listens for a keypress and then pushes the inputted ingredients into a DOM Array (scrapSauce.ingredients).
 
 ```
 
@@ -40,11 +40,12 @@ scrapSauce.manuallyAdd = function(inputField){
     scrapSauce.ingredients.push(newContent);
 
     inputField.keypress(function(event){
-        scrapSauce.updateh2(); // another function that updates the h2 with new ingredient name
+        scrapSauce.updateh2(); 
+				// another function that updates the h2 with new ingredient name
         inputField.slideUp(); // animation that slides up the input field
     }
                 
-    // finally, fire an AJAX call to fetch Yummly recipe objects with the inputted new ingredients
+    // finally, fire an AJAX call to fetch Yummly recipe objects with the new ingredients
     scrapSauce.getRecipes(scrapSauce.ingredients);
 }); 
 
@@ -168,7 +169,7 @@ On success, the back-end Sinatra route handles the data that it receives from th
 
 ```
 class RecipeController < ApplicationController
-		Recipe.create(params["recipe"]).update(user_id: session[:user_id])
+	Recipe.create(params["recipe"]).update(user_id: session[:user_id])
 end	
 ```
 
@@ -182,11 +183,13 @@ The next problem was that at this point, all recipes could be deleted by *any* u
 ```
 helpers do 
   def logged_in?
-    !!session[:user_id]  #if a session id exists (truthy), it means a user is logged in
+    !!session[:user_id]  
+		#if a session id exists (truthy), it means a user is logged in
   end
 
   def current_user
-    User.find(session[:user_id]) #we find the User in the database that has a matching user_id  
+    User.find(session[:user_id]) 
+		#we find the User in the database that has a matching user_id  
   end
 end
 ```

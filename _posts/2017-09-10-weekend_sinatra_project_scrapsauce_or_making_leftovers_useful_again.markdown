@@ -86,7 +86,7 @@ With CSS styles applied, the front-end view and user-flow looks something like t
 ![](https://i.imgur.com/4YxiE2b.gif)
 > Search results populating.
 
-At this point, the program is just a bunch of unorganized files. To add organization and extensibility, I refactored the codebase into the MVC (Model View Controller) framework and added a database and server-side routing with ActiveRecord and Sinatra. This meant creating a Gemfile and bundle installing ActiveRecord, Sinatra and a bunch of other dependencies (bcrypt for password encryption, tux and capybara for tests, etc.). It also meant creating a Rakefile for task automation (table migrations, etc), and creating directories for my models, controllers, views, and in the end, moving all of my files into the appropriate paths for this new, more organized format.
+At this point, the program is still just a bunch of unorganized files. To add organization and extensibility, I refactored the codebase into the MVC (Model View Controller) framework and added a database and server-side routing with ActiveRecord and Sinatra. This means creating a Gemfile and bundle installing ActiveRecord, Sinatra and a bunch of other gem dependencies (bcrypt for password encryption, tux and capybara for tests, etc.). It also means creating a Rakefile for task automation (table migrations, etc), and creating directories for my models, controllers, views, and in the end, moving all of my files into the appropriate paths for this new, more organized format.
 
 ```
 ├── app
@@ -110,7 +110,7 @@ At this point, the program is just a bunch of unorganized files. To add organiza
 > ScrapSauce's new MVC architecture
 
 The domain model is pretty simple: 
-* People can sign up and log into the app as ***Users*** with an encrypted password (using the bcrypt Gem and the has_secure_password method for encryption and authentication)
+* People can sign up and log into the app as ***Users*** with an encrypted password (using the bcrypt gem and the has_secure_password method for encryption and authentication)
 * Users could search for, create and save many ***Recipes***. 
 * A User would ***have many*** Recipes, and each individual Recipe would ***belong to*** a User.
 

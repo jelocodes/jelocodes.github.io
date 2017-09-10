@@ -1,13 +1,15 @@
 ---
 layout: post
 title:  "Weekend Sinatra Project: ScrapSauce (or Making Leftovers Useful Again)"
-date:   2017-09-10 01:26:28 +0000
+date:   2017-09-09 21:26:28 -0400
 ---
 
 
-In learning how to program, I've amassed a bunch of old code lying around from past projects and courses. A lot of these are half finished, projects of and with friends, and code that was limited by things I didn't know back then. In a word, they were leftovers. As an exercise in building a Sinatra app with data persistance, I thought instead of creating something completely new, it might be nice to revisit an old codebase and extend it, adding a database and server component with my new ActiveRecord and Sinatra knowledge. 
+In learning how to program, I've amassed a bunch of old code lying around from past projects and courses. A lot of these are half finished, projects with and by friends, and code that was limited by things I didn't know back then. In a word, they're leftovers. As an exercise in building a Sinatra app with data persistance, I thought instead of creating something completely new, it might be nice to revisit an old codebase and extend it, adding a database and server component with my new ActiveRecord and Sinatra knowledge. 
 
-The basis of the app includes work by Deborah Chan, a friend and collaborator from a few years back, and bohemian coder and mentor Drew Minns. It uses the [Yummly](http://yummly.com) API to fetch recipe objects from the Yummly database, which contains all of Yummly's user-created recipes. It was abandoned some years ago and the codebase unmaintained. Essentially, the goal for my new version is to make use of leftovers that users have lying around by generating recipes containing those leftovers. Users can input any leftover food that they want, and the app would generate recipes based on that input. It's like placing scraps of leftover food in a blender and coming out with something tasty: thus "Scrap Sauce." 
+The basis of the app includes work by Deborah Chan, a friend and collaborator from a few years back, and bohemian coder and mentor Drew Minns. It uses the [Yummly](http://yummly.com) API to fetch recipe objects from the Yummly database, which contains all of Yummly's user-created recipes. It was abandoned some years ago and the codebase unmaintained. 
+
+Essentially, the goal for my new version is to make use of user's leftovers as well - albeit not code, but food - by generating recipes for them containing their inputted food. Users can input any leftover food that they want, and the app should generate recipes based on that input. It's like placing scraps of leftover food in a blender and coming out with something tasty: thus the name "Scrap Sauce." 
 
 The app takes input from the user via an input form: "addField."
 
@@ -18,7 +20,7 @@ The app takes input from the user via an input form: "addField."
 </p>
 ```
 
-It uses jQuery to target the input field, listens for a keypress and pushes the ingredients to an Array (scrapSauce.ingredients) upon firing.
+It uses jQuery to target the input field, listens for keypress and pushes the ingredients to an Array (scrapSauce.ingredients) upon firing.
 
 ```
 scrapSauce.ingredients = [];

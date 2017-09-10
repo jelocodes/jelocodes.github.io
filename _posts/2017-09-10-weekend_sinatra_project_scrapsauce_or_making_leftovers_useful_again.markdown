@@ -61,7 +61,7 @@ With CSS styles applied, the front-end view and user-flow looks something like t
 ![](https://i.imgur.com/4YxiE2b.gif)
 > Search results populating.
 
-At this point, the program is just a bunch of unorganized files. To add persistence and extensibility, I needed to refactor the codebase into the MVC framework and add a database and server-side routing with ActiveRecord and Sinatra. This meant creating a Gemfile and bundle installing Active Record, Sinatra and a bunch of other dependencies (bcrypt for password encryption, tux and capybara for tests, etc.), creating a Rake file for task automation, creating directories for my models, controllers, views, and public components, and in the end, moving all of my files into the appropriate directories for this new format.
+At this point, the program is just a bunch of unorganized files. To add persistence and extensibility, I needed to refactor the codebase into the MVC framework and add a database and server-side routing with ActiveRecord and Sinatra. This means creating a Gemfile and bundle installing Active Record, Sinatra and a bunch of other dependencies (bcrypt for password encryption, tux and capybara for tests, etc.). It also meant creating a Rakefile for task automation (table migrations, etc), creating directories for my models, controllers, views, and public components, and in the end, moving all of my files into the appropriate directories for this new, more organized format.
 
 ```
 ├── app
@@ -85,9 +85,9 @@ At this point, the program is just a bunch of unorganized files. To add persiste
 > ScrapSauce's new MVC architecture
 
 The domain model is pretty simple: 
-* People could sign up to the website as ***Users*** 
+* People could sign up and log in to the app as ***Users*** with an encrypted password (using bcrypt and the has_secure_password method)
 * Users could search for, create and save many ***Recipes***. 
-* A User would *have many* Recipes, and each individual Recipe would *belong to* a User.
+* A User would ***have many*** Recipes, and each individual Recipe would ***belong to*** a User.
 
 Thus:
 
@@ -136,9 +136,9 @@ scrapSauce.save = function(recipe) {
 }
 ```
 
-The function first puts the desired elements of the JSON 'recipe' object that we want to save into variables, then sends the data through a post request to the route *'/recipes/new'* using AJAX. We then run browser alerts to test whether the action was successful. 
+The function first puts the desired elements of the JSON 'recipe' object that we want to save into variables, then sends the data through a post request to the route *'/recipes/new'* using AJAX. For testing purposes, we also run browser alerts to test whether the action was successful or not. 
 
-Upon success, the Sinatra route handles the sent data on the back-end and creates our Recipe object. It also updates the newly created Recipe object with a user_id, pairing it with the current logged-in User (who's id has been stored in the browser session's user_id key).  
+On success, the Sinatra route handles the data that it receives to create our Recipe object. It also updates the newly created Recipe object with a user_id value identical to the id of the currently logged-in User by using the browser session's user_id value.
 
 ```
 class RecipeController < ApplicationController
@@ -151,21 +151,21 @@ With that, recipe instantiation is achieved. The data is now persisted on the ba
 ![](http://i.imgur.com/xi8gDXC.gif)
 > Recipe instantiation in real time.
 
-The next problem was that at this point, all recipes could be deleted by any user of the app. What was needed was a way for the app to *know* when the recipe's creator was the one viewing the recipe, and allow deletion only then. We achieve this by creating *helper methods* that check current user identity. Placed in the ApplicationController, all other controllers have access to these methods:
+The next problem was that at this point, all recipes could be deleted by *any* user of the app. What was needed was a way for the app to *know* when the recipe's creator was the one viewing the recipe, and allow deletion only then. We achieve this by creating *helper methods* that check current user identity. Placed in the ApplicationController, because all other controllers inherit from the ApplicationController, all other controllers have access to these methods.
 
 ```
 helpers do 
   def logged_in?
-    !!session[:user_id]
+    !!session[:user_id]  #if a session id exists (truthy), it means a user is logged in
   end
 
   def current_user
-    User.find(session[:user_id])
+    User.find(session[:user_id]) #we find the User in the database that has a matching user_id  
   end
 end
 ```
 
-Now with some erb logic in the views, the view will only render the Delete button if the recipe object currently loaded has a user_id that matches the current logged in user's user_id (stored in the session). 
+Now with some .erb logic in the views, the view will only render the Delete button if the recipe object currently loaded has a user_id that matches the current logged in user's user_id (stored in the session). 
 
 ```
 <% if logged_in? && @recipe.user_id == session[:user_id] %>

@@ -184,12 +184,12 @@ The next problem was that at this point, all recipes could be deleted by *any* u
 helpers do 
   def logged_in?
     !!session[:user_id]  
-		#if a session id exists (truthy), it means a user is logged in
+	#if a session id exists (truthy), it means a user is logged in
   end
 
   def current_user
     User.find(session[:user_id]) 
-		#we find the User in the database that has a matching user_id  
+	#we find the User in the database that has a matching user_id  
   end
 end
 ```

@@ -209,4 +209,4 @@ Taking old code, I was able to use new things that I've learned to add an entire
 
 Watch me demo the app below: 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dvmH4O8-NNk" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dvmH4O8-NNk?rel=0" frameborder="0" allowfullscreen></iframe>

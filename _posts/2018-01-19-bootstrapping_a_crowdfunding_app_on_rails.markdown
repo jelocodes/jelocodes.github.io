@@ -25,7 +25,7 @@ I opted to use Rails for the backend, as coding with Ruby makes me happy (Minswa
 
 ***Comments:*** so users can talk about projects, and voice complaints or compliments. Each comment would belong to a user (who left the comment), as well as to a project (that the comment pertains to).
 
-**Categories: ** Each project would fall under specific categories.
+***Categories:*** Each project would fall under specific categories.
 
 The Model Relationships are as follows:
 

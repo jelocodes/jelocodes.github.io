@@ -102,7 +102,7 @@ The next screen is the second part of the form, and rewards are created through 
 
 ![](https://i.imgur.com/5kbcoPT.png?1)
 
-The result, once all the fields are filled up and the project is created, is a project object with its corresponding categories objects, as well as its corresponding rewards objects, created and linked to it via an ActiveRecord relation.
+The result, once all the fields are filled up and the project is created, is a project object with its corresponding categories objects, as well as its corresponding rewards objects, created and linked to itself via nifty ActiveRecord relations.
 
 With some [Devise](https://rubygems.org/gems/devise/versions/4.2.0) authentications and validations for the forms, the basic skeleton of the app is working and all set up. See below for a quick demo (and some troubleshooting) of its functionality.
 

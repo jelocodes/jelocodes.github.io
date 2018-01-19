@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Bootstrapping a CrowdFunding App on Rails"
-date:       2018-01-19 16:56:24 +0000
+date:       2018-01-19 11:56:25 -0500
 permalink:  bootstrapping_a_crowdfunding_app_on_rails
 ---
 

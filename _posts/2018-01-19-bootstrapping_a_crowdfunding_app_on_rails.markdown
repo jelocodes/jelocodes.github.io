@@ -25,7 +25,7 @@ I opted to use Rails for the backend, as coding with Ruby makes me happy (Minswa
 
 ***Comments:*** so users can talk about projects, and voice complaints or compliments. Each comment would belong to a user (who left the comment), as well as to a project (that the comment pertains to).
 
-***Cctegories:* ** Each project would fall under specific categories.
+**Categories: ** Each project would fall under specific categories.
 
 The Model Relationships are as follows:
 
@@ -64,7 +64,7 @@ The Model Relationships are as follows:
 
 Once those were conceptually in place, I moved on with creating each model table and migrating them into the database. 
 
-**Comments**
+**Comments and Polymorphism:**
 
 While most of the tables' columns and relations were pretty easy to conceptualize, the commenting system was tricky. I imagined users to be able to comment on projects, but also, to be able to comment on other comments, so that users could actively reference each other and start mini threads. Although I was told there were lightweight Gems that could do this better, and that a hand-coded solution may not scale well, I decided to try to build the functionality from scratch for learning's sake. 
 
@@ -84,6 +84,8 @@ The result is that projects and comments are both commentable:
 
 Pretty cool.
 
+**Project Creation and Form Nesting:**
+
 Creating the projects themselves is fairly straightforward. They need certain key things, including descriptors like an 'About' and 'FAQ' sections, as well as 'Categories' and 'Rewards.' The latter columns are a little bit more complex because categories and rewards are objects in and of themselves. Therefore, there needs to be a way to create those separate objects during the same process of creating a Project.
 
 For Categories, users are allowed to either pick an already existing category, or create a new category of their choosing. As you can see, the form handles building categories directly onto the project itself, chaining their creation onto its parent. 
@@ -102,9 +104,9 @@ The next screen is the second part of the form, and rewards are created through 
 
 The result, once all the fields are filled up and the project is created, is a project object with its corresponding categories objects, as well as its corresponding rewards objects, created and linked to it via an ActiveRecord relation.
 
-With some [Devise](https://rubygems.org/gems/devise/versions/4.2.0) authentications and validations for the forms, the basic skeleton of the app is working and all set up. See below for a quick demo (and some troubleshooting) of its functionality. Pretty satisfying bootstrap of a crowdfunding site via Rails. 
+With some [Devise](https://rubygems.org/gems/devise/versions/4.2.0) authentications and validations for the forms, the basic skeleton of the app is working and all set up. See below for a quick demo (and some troubleshooting) of its functionality.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/drreRyb84PE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-We'll see if I eventually return to the project to add the actual blockchain crowdfunding component. Maybe I can crowdfund it?
+Pretty satisfying bootstrap of a crowdfunding platform using Rails! We'll see if I eventually return to the project to add the actual blockchain crowdfunding component... Maybe I can crowdfund it?
 

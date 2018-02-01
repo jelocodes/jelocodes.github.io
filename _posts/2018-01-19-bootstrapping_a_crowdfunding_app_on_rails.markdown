@@ -104,6 +104,18 @@ The next screen is the second part of the form, and rewards are created through 
 
 The result, once all the fields are filled up and the project is created, is a project object with its corresponding categories objects, as well as its corresponding rewards objects, created and linked to itself via nifty ActiveRecord relations.
 
+**Dependencies and Deletion**
+
+After all of that, there was one more thing I knew I wanted to add to complete the basic app's functionality: a way to delete projects. I decided to pop into a rails sandbox with the handy ```rails c``` command in my console to delete a project, just to test out the command. What followed was... unexpected.
+
+![](https://i.imgur.com/wU1JmOV.png?1)
+
+The delete transaction was rolled back with an error citing ```InvalidForeignKey```... this was something I had not dealt with before, and it took awhile debugging to find out the issue. From a bevy of StackOverflow and Google saviours, I found out that one simply can't delete an ActiveRecord instance if that instance has others depending on it. That is to say, if other model tables have a foreign key pointing to the object you are trying to delete. In my case, many things are dependent on the project model: the rewards model tables and comments model tables for instance, both point to project tables using a foreign key column. Basically, ActiveRecord doesn't allow me to delete something that other things depend on for its associations to make sense.
+
+Though there are many ways to solve the issue, the easiest one in my situation was to specify the ```dependent: :destroy``` option on the Project model's associations. This would tell ActiveRecord to allow the deletion of the desired project, and fixing any association mishaps by *also* deleting any of the objects dependent on it. So, now we can delete a project, and at the same time, delete all of the reward and comment objects associated with said project. 
+
+![](https://i.imgur.com/mtEdVyg.png?1)
+
 With some [Devise](https://rubygems.org/gems/devise/versions/4.2.0) authentications and validations for the forms, the basic skeleton of the app is working and all set up. See below for a quick demo (and some troubleshooting) of its functionality.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/drreRyb84PE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

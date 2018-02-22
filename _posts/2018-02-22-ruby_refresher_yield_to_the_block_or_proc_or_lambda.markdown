@@ -66,7 +66,7 @@ As you can see, if you place this particular instance of #gen_times in a variabl
 
 **The (half-)Life of a Lambda**
 
-A lambda is the eleventh letter of the Greek alphabet (λ), and is used a constant representing radiactive decay in a half-life equation (Gordon Freeman fans may also be familiar with it). In programming, a lambda is also used to refer to anonymous methods, that is, methods without a name. A lambda in Ruby is an anonymous method (that is also an object) that you can pass paremeters into via pipes:
+A lambda is the eleventh letter of the Greek alphabet (λ), and is used as a constant representing radiactive decay in a half-life equation (Gordon Freeman fans may also be familiar with it). In programming, a lambda is used to refer to anonymous methods, that is, methods without a name. A lambda in Ruby is an anonymous method (that is also an object) that you can pass paremeters into via pipes:
 
 ```
 lambda do |string|

@@ -28,13 +28,13 @@ end
 #=> 2
 ```
 
-In that example, we created a method called #demonstrate_block which accepted one argument, ```number```, the method body yielding that argument to a block. The *yield* key word enables the method to accept a block, essentially passing in whatever code is in your method to the provided block. It stops the code from executing inside your method, and instead passes the information to your provided block, which then executes. In this case, we pass in our number into the block, which adds 1 to it. This is pretty powerful when you consider that you can put anything in a block and yield whatever other logic or data into it. This is exactly what iterator methods do, like #each. You don't really stop to consider that there is additional logic inside the method itself that is fetching the collection data for your block to do whatever it wants with. In that way, blocks are very good for encapsulation. 
+In the above example, we create a method called #demonstrate_block which accepts one argument, ```number```, the method body yielding that argument to a block. The *yield* key word enables the method to accept a block, essentially passing in whatever code is in your method to the provided block. It stops the code from executing inside your method, and instead passes the information to your provided block, which then executes. In this case, we pass in our number into the block, which adds 1 to it. This is pretty powerful when you consider that you can put anything in a block and yield whatever other logic or data into it. This is exactly what iterator methods do, like #each. At first glance, we don't really stop to consider that there is additional logic *hidden inside* the #each method itself that is fetching the collection data for your block to do whatever it wants with. In that way, blocks and yield are very good for abstraction and encapsulation. 
 
 A block is basically all what a proc or lambda is, but they're two slightly different variations of a block.
 
 **A Proc, Approximately**
 
-Whereas a block is just a block of code that you can pass in with different methods, a proc, short for procedure, is an object. A poc object is a block of code that has been *bound* to a set of local variables. Once bound, the code may be called in different contexts and still access those variables. 
+Whereas a block is just a block of code that you can pass in with different methods, a proc, short for procedure, is an object. A proc object is a block of code that has been *bound* to a set of local variables. Once bound, the code may be called in different contexts and still access those variables. 
 
 Example:
 

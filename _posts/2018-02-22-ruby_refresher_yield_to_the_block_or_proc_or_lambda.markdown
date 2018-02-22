@@ -114,6 +114,7 @@ multiple_procs(a,b)
 ***3. Although Procs and Lambdas are both Proc Objects, they differ in:***
 
 *a) argument specificity:* Lambdas care about how many arguments are passed into it, while Procs don't 
+
 *b) returning:* The return keyword in a Lambda triggers the code just outside of where its declared, while the return keyword in a Proc triggers the code outside of the method where the proc is executed (see image up top)
 
 The specific type you use depends on your use-case, but now you hopefully know the differences, and perhaps more illuminating, the similarities, between these three very cool Ruby features.

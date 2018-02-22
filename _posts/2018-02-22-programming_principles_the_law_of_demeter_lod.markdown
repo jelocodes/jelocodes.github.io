@@ -34,7 +34,7 @@ user.best_friend
 user.friends.find_by(best: true)
 ```
 
-because all of the "friend"-related complexity is hidden away within the user model. This protects user (Object A)-related code from future changes to friend (Object B) functionality. For example, if the above architecture changed in such a way that "best friendship" was determined by the highest of some sort of incremented value instead of a boolean, the "two-dots" code would need to be changed everywhere its used, as opposed to the first "one-dot" implementation, which hides the complexity in *one* place (the User#best_friend method) whose definition can be changed without having to track down and update every single usage. The ```user``` model only knows about itself in relation to its neighbour, the ```friends``` model, through its own method, instead of having to procure that information  through an external method *outside* of itself (reaching *through* Object B). 
+...because all of the "friend"-related complexity is hidden away within the user model. This protects user(Object A)-related code from future changes to friend (Object B) functionality. For example, if the above architecture changed in such a way that "best friendship" was determined by the highest of some sort of incremented value instead of a boolean, the "two-dots" code would need to be changed everywhere its used, as opposed to the first "one-dot" implementation, which hides the complexity in *one* place (the User#best_friend method) whose definition can be changed without having to track down and update every single usage. The ```user``` model only knows about itself in relation to its neighbour, the ```friends``` model, through its own method, instead of having to procure that information  through an external method *outside* of itself (reaching *through* Object B). 
 
 For instance, a Song model should have an instance method that introspects on itself:
 
@@ -48,11 +48,11 @@ Class Song < ActiveRecord::Base
 end
 ```
 
-...instead of reaching through its neighbour on *every* instance of desired functionality, so you only have to make changes in one place. The object knows about itself and its relation to its neighbour, and does not extend that knowledge to any other place in the codebase (it's not nosy). 
+...instead of reaching through its neighbour on *every* instance of desired functionality, so we'd only have to make changes in one place. The object knows about itself and its relation to its neighbour, and does not extend that knowledge to any other place in the codebase (it's not nosy). 
 
-In dealing with more complicated apps with the MVC architecture, we must also apply this principle towards *separation of concerns*. For example, protecting our views from complexity that actually belongs in our models. The view should not *directly* know about the model, just as the model should not *directly* know about the view. The model-related logic needs to be encapsulated in our models as internal methods and only invoked when we need them, not spread out and re-written every time we need that logic.
+In dealing with more complicated apps with the MVC architecture, we must also apply this principle towards *separation of concerns*. For example, protecting our views from complexity that actually belongs in our models. The view should not *directly* know about the model, just as the model should not *directly* know about the view. The model-related logic needs to be encapsulated in our models as internal methods and only invoked when we need them, not spread out and referenced every time we need that logic in places (like our views) that are* far* from our model's neighbours (they're not even living in the same city district).
 
-In following this principle, we can write cleaner, more maintainable, less convuluted code, that, when needs to be changed, only needs to be changed in one or two places instead of *everywhere*. 
+In following this principle, we can write cleaner, more maintainable, less convuluted and tangled code, that, when needs to be changed, only needs to be changed in one or two places *very close to each other* instead of *everywhere* in the program that the functionality appears. 
 
 
 

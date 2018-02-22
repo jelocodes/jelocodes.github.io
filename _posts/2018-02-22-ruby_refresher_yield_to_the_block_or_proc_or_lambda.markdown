@@ -12,6 +12,8 @@ permalink:  ruby_refresher_yield_to_the_block_or_proc_or_lambda
 
 Ruby was built with the goal of having the programmer enjoy themselves while programming, but there are some features in the language that, if not properly internalized, can go unappreciated, under-used, or mis-used by many. In first learning Ruby, one of the most interesting but most glossed over features for me, was the block, and its peers: the proc, and lambda.
 
+**Yield to the Block**
+
 Of course, we know what a block is. Just a chunk of code between braces, ``{ }``, or between ``do/end`` keywords that can be passed to a method, similar to how arguments are passed into methods. You can make your own methods, or use some of Ruby's out-of-the-box methods, like iterator methods, that can be called with a block, to ```yield``` data to that block to operate on.
 
 Example:
@@ -89,7 +91,7 @@ increment.call(2)
 #=> 3
 ```
 
-**So, what's the difference between a block, lambda and proc? **
+**So, what's the difference between a block, lambda and proc?** 
 
 ***1. A block is just a chunk of code, a proc is an object:***
 

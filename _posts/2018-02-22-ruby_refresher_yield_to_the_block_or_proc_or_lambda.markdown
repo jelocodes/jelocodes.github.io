@@ -71,10 +71,10 @@ A lambda is the eleventh letter of the Greek alphabet (λ), and is used as a con
 ```
 lambda do |string|
     if string == "try"
-		   return "There's no such thing"
-		else 
-		   return "Do or do not."
-		end
+		    return "There's no such thing"
+    else 
+		    return "Do or do not."
+    end
 end 
 ```
 

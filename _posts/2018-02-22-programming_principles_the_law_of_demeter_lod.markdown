@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Programming Principles: The Law of Demeter (LoD)  "
-date:       2018-02-22 21:15:05 +0000
+date:       2018-02-22 16:15:05 -0500
 permalink:  programming_principles_the_law_of_demeter_lod
 ---
 
@@ -48,13 +48,11 @@ Class Song < ActiveRecord::Base
 end
 ```
 
-...instead of reaching through its neighbour on *every* instance of desired functionality, so you only have to make changes in one place. The object knows about itself and its relation to its neighbour, and does not extend that knowledge to any other place in the codebase (it is not nosy). 
+...instead of reaching through its neighbour on *every* instance of desired functionality, so you only have to make changes in one place. The object knows about itself and its relation to its neighbour, and does not extend that knowledge to any other place in the codebase (it's not nosy). 
 
-In dealing with more complicated apps with the MVC architecture, we must also apply this principle towards *separation of concerns*. For example, protecting our views from complexity that actually belongs in our models. The View should not *directly* know about the model, just as the Model should not *directly* know about the View. The Model-related logic needs to be encapsulated in our models and only invoked when we need them, not spread out and re-written every time we need that logic.
+In dealing with more complicated apps with the MVC architecture, we must also apply this principle towards *separation of concerns*. For example, protecting our views from complexity that actually belongs in our models. The view should not *directly* know about the model, just as the model should not *directly* know about the view. The model-related logic needs to be encapsulated in our models as internal methods and only invoked when we need them, not spread out and re-written every time we need that logic.
 
 In following this principle, we can write cleaner, more maintainable, less convuluted code, that, when needs to be changed, only needs to be changed in one or two places instead of *everywhere*. 
-
-
 
 
 

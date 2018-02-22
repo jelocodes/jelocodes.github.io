@@ -71,14 +71,14 @@ A lambda is the eleventh letter of the Greek alphabet (λ), and is used as a con
 ```
 lambda do |string|
     if string == "try"
-		  return "There's no such thing"
+		return "There's no such thing"
     else 
-		  return "Do or do not."
+		return "Do or do not."
     end
 end 
 ```
 
-Looks familiar? That's because a lambda, when broken down, is just a proc. In fact, it is literally just another instance of the Proc class. We can put a lambda, that is, a nameless method that encapsulates a block of code, in a variable like so:
+Look familiar? That's because a lambda, when broken down, is just a proc. In fact, it is literally just another instance of the Proc class. We can put a lambda, that is, a nameless method that encapsulates a block of code, in a variable like so:
 
 ```
 increment = lambda { |num| puts num + 1}

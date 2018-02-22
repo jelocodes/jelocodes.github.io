@@ -1,13 +1,13 @@
 ---
 layout: post
 title:      "Ruby Refresher: Yield To The Block (...Or Proc, or Lambda)"
-date:       2018-02-22 06:01:14 +0000
+date:       2018-02-22 01:01:14 -0500
 permalink:  ruby_refresher_yield_to_the_block_or_proc_or_lambda
 ---
 
 
 ![](http://i.imgur.com/mLY2X1y.png!)
-> Lambda vs. Proc at a glance, image via Codecademy 
+> Lambda vs. Proc at a glance
 
 
 Ruby was built with the goal of having the programmer enjoy themselves while programming, but there are some features in the language that, if not properly internalized, can go unappreciated, under-used, or mis-used by many. In first learning Ruby, one of the most interesting but most glossed over features for me, was the block, and its peers: the proc, and lambda.

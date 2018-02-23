@@ -22,7 +22,7 @@ The simple design style can be summarized by the following points:
 
 The notion is that each unit of code, like objects in nature, should be able to operate without assuming much of anything about any other unit of code (including its sub components). This is related to the principles of "information hiding" or "encapsulation." Having each unit of code be modular means less convuluted architecture, and thus, less modification of multiple parts of the program when one thing has to change. 
 
-According to Wikipedia, when applied to object-oriented programs, the Law of Demeter can be more precisely called the “Law of Demeter for Functions/Methods” (LoD-F). In this case, an object ```A``` can request a service (call a method) of an object instance ```B```, but object ```A``` should not "reach through" object ```B``` to access yet another object, ```C```, to request its services. Doing so would mean that object ```A``` implicitly requires greater knowledge of object ```B```'s internal structure.
+According to Wikipedia, when applied to object-oriented programs (OOP), the Law of Demeter can be more precisely called the “Law of Demeter for Functions/Methods” (LoD-F). In this case, an object ```A``` can request a service (call a method) of an object instance ```B```, but object ```A``` should not "reach through" object ```B``` to access yet another object, ```C```, to request its services. Doing so would mean that object ```A``` implicitly requires greater knowledge of object ```B```'s internal structure.
 
 In OOP, the Law of Demeter is sometimes known as the one-dot rule:
 
@@ -50,7 +50,7 @@ end
 
 ...instead of reaching through its neighbour on *every* instance of desired functionality, so we'd only have to make changes in one place. The object knows about itself and its relation to its neighbour, and does not extend that knowledge to any other place in the codebase (it's not nosy). 
 
-In dealing with more complicated apps with the MVC architecture, we must also apply this principle towards *separation of concerns*. For example, protecting our views from complexity that actually belongs in our models. The view should not *directly* know about the model, just as the model should not *directly* know about the view. The model-related logic needs to be encapsulated in our models as internal methods and only invoked when we need them, not spread out and referenced every time we need that logic in places (like our views) that are *far* from our model's neighbours (they're not even living in the same city district).
+In dealing with more complicated apps with the MVC architecture, we must also apply this principle towards *separation of concerns*. For example, protecting our views from complexity that actually belongs in our models. The view should not *directly* know about the model, just as the model should not *directly* know about the view. The model-related logic needs to be encapsulated in our models as internal methods and only invoked/referenced when we need them, not spread out and re-implemented every time we need that logic in places (like our views) that are *far* from our model's neighbours (they're not even living in the same city district).
 
 In following this principle, we can write cleaner, more maintainable, less convuluted and tangled code, that, when needs to be changed, only needs to be changed in one or two places *very close to each other* instead of *everywhere* in the program that the functionality appears. 
 

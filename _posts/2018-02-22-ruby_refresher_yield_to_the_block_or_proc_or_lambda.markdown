@@ -99,7 +99,7 @@ A block is just a piece of code that's part of a method syntax. It doesn't mean 
 
 ***2. You can only include one block per method, but you can include multiple procs:***
 
-Because a block is not an object in and of itself and can only be passed in via a specific syntax in method definitions, you can only ever pass in one block per method. Because procs are objects,many of them can be encapsulated in variables and passed in as many as you'd like depending on your needs:
+Because a block is not an object in and of itself and can only be passed in via a specific syntax in method definitions, you can only ever pass in one block per method. Because procs are objects, many of them can be encapsulated in variables and passed in as many as you'd like depending on your needs:
 
 ```
 def multiple_procs(proc1, proc2)

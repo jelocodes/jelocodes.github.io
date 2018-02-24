@@ -18,12 +18,12 @@ This was a new error that I had not experienced before in simpler domain models.
 - ```project``` has_many ```comments```
 - ```project``` has_many ```rewards```
 
-Each Comment and Reward instance that belonged to the Project instance that I wanted to delete were dependent on that Project instance. ActiveRecord was throwing an exception because if I deleted that Project instance, the model instances that relied on it as a dependency would be cease to function. The Comment model instance would now belong to... something nonexistant. Logical consistency breaks down, and like a Jenga tower of interdependent blocks, if you delete one, the whole structure loses its stability.
+Each Comment and Reward instance that belonged to the Project instance that I wanted to delete were dependent on that Project instance. ActiveRecord was throwing an exception because if I deleted that Project instance, the model instances that rely on it, still existant, would now be referring to something that didn't exist. The Comment model instance would now belong_to... something no longer there. Logical consistency breaks down, and like a Jenga tower of interdependent blocks, if you delete one, the whole structure loses its stability.
 
 ![](https://i.imgur.com/Vh2jIMX.png)
-> If interdependent ActiveRecord objects were Jenga Blocks and you were to delete one, the structure would topple.
+> If interdependent ActiveRecord objects were Jenga Blocks and you were to take one out that others depended on, the structure would topple.
 
-In order to enable deletion of my model instance, I would first need to remove the various other model instances that reference it, so that nothing would be left in the database that refers to the would-be deleted model instance. 
+In order to enable deletion of my model instance, I would first need to remove the various other model instances that reference it, so that nothing would be left in the database that refers to the would-be-deleted model instance. 
 
 Rails can handle destroying those dependent models right in the model definition:
 
@@ -43,6 +43,8 @@ If using Foreign Keys in our database, another way to handle this is in the data
 add_foreign_key :rewards, :projects, on_delete: :cascade
 ```
 
-Once this is taken care of, ActiveRecord won't complain. In general, making sure that all dependent object relations are taken into account when deleting or modifying a single object instance, is a very good thing to remember when working with more complex, interrelated databases/domain models. 
+This effectively chains deletion of the related object instances. Once this is taken care of, ActiveRecord won't complain. 
+
+In general, making sure that all dependent object relations are taken into account when deleting or modifying a single object instance, is a very good thing to remember when working with more complex, interrelated databases/domain models. 
 
 

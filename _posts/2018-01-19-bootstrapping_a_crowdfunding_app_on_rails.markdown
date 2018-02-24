@@ -15,7 +15,7 @@ For this blog post, I'll be focusing on the first part of creating the app, the 
 ![](https://i.imgur.com/7Dr6EVd.png)
 > Meet ThingFunder (it's a working title...)
 
-I opted to use Rails for the backend, as coding with Ruby makes me happy (Minswan). The first thing I needed to do was decide what models (and their relations) were needed in the domain. At its most basic, a crowdfunding app would need: 
+I opted to use Rails for the backend, as coding with Ruby makes me happy ([Minswan](http://blog.steveklabnik.com/posts/2011-08-19-matz-is-nice-so-we-are-nice)). The first thing I needed to do was decide what models (and their relations) were needed in the domain. At its most basic, a crowdfunding app would need: 
 
 ***Users:*** who could both create their own projects and fund the projects of others.
 
@@ -54,7 +54,7 @@ The Model Relationships are as follows:
 
 **Category:**
 * has_many :project_categories 
-* has_many :projects, through: :post_categories
+* has_many :projects, through: :project_categories
 
 **Join-tables:**
 
@@ -72,11 +72,11 @@ Instead of creating multiple models for comment type which would have been a lot
 
 ![](https://i.imgur.com/RL1ol11.png)
 
-As you can see, a comment belongs to a user, and itself can have many comments. It also belongs to ```commentable```, which is a polymorphic association... commentable can be multiple things (a post, or another comment). Onto the migration:
+As you can see, a comment belongs to a user, and itself can have many comments. It also belongs to ```commentable```, which is a polymorphic association... commentable can be multiple things (a project, or another comment). Onto the migration:
 
 ![](https://i.imgur.com/iEtJ0cp.png)
 
-Since a column belongs to a User, there is a column set for the user's foreign key. That's pretty standard. However, what's interesting is a column called ```"commentable_id"``` which is set to store the ID of the object that the user is commenting on. This creates a relation between the comment and the commentable thing that was commented on. To further specify what that commentable thing is, we also have a column called ```"commentable_type"```, indicating the type of object we're commenting on (whether it's a Post or another Comment).
+Since a column belongs to a User, there is a column set for the user's foreign key. That's pretty standard. However, what's interesting is a column called ```"commentable_id"``` which is set to store the ID of the object that the user is commenting on. This creates a relation between the comment and the commentable thing that was commented on. To further specify what that commentable thing is, we also have a column called ```"commentable_type"```, indicating the type of object we're commenting on (whether it's a Project or another Comment).
 
 The result is that projects and comments are both commentable:
 

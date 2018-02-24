@@ -11,10 +11,9 @@ One unexpected error that I encountered while working on my first Rails app was 
 Project.last.delete
 
 SQLite3::ConstraintException: FOREIGN KEY constraint failed: DELETE FROM "projects" WHERE "projects"."id" = ?
-
 ```
 
-This was a new error that I had not experienced before in simpler domain models. Luckily it was fairly simple to debug (thanks to Google, StackOverflow, and in the end, common sense). The issue was that the model instance that I was attempting to delete, ```Project```, had many collections tied to it. In my case, each Project model were interdependent on other models:
+This was a new error that I had not experienced before in simpler domain models. Luckily it was fairly simple to debug (thanks to Google, StackOverflow, and in the end, common sense). The issue was that the model instance that I was attempting to delete had many collections tied to it. In my case, each Project model is tied to other models:
 
 - ```project``` has_many ```comments```
 - ```project``` has_many ```rewards```
@@ -36,14 +35,14 @@ class Project < ActiveRecord::Base
 end
 ```
 
-This would cause Rails to destroy all of the dependent records in your database in one fell swoop when the destroy action is called on the Project model instance. 
+This would cause Rails to destroy all of the dependent records in our database in one fell swoop when the destroy action is called on the Project model instance. 
 
-If using Foreign Keys in your database, another way to handle this is in your database migrations directly, by adding cascading deletes to the table of the object(s) which has the ```belongs_to``` association:
+If using Foreign Keys in our database, another way to handle this is in the database migrations directly, by adding cascading deletes to the table of the dependent object(s) (the ones with the belongs_to association).
 
 ```
 add_foreign_key :rewards, :projects, on_delete: :cascade
 ```
 
-Once this is taken care of, ActiveRecord won't complain. In general, making sure that all dependent object relations are taken into account when deleting or modifying a single object is a very good thing to remember when working with more complex, interrelated databases/domain models. 
+Once this is taken care of, ActiveRecord won't complain. In general, making sure that all dependent object relations are taken into account when deleting or modifying a single object instance, is a very good thing to remember when working with more complex, interrelated databases/domain models. 
 
 

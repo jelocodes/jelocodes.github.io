@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "ActiveRecord Objects: Dependencies and Deletion"
-date:       2018-02-24 00:39:25 +0000
+date:       2018-02-23 19:39:26 -0500
 permalink:  activerecord_objects_dependencies_and_deletion
 ---
 
@@ -9,7 +9,7 @@ permalink:  activerecord_objects_dependencies_and_deletion
 ![](https://i.imgur.com/Vh2jIMX.png)
 > If interdependent ActiveRecord objects were Jenga Blocks and you were to delete one, the structure would topple.
 
-One unexpected error I encountered while working on my first Rails app was in implementing my delete feature. Basically, the ActiveRecord ORM would not allow me to delete the model instance that I wanted to, and threw an exception that like this: 
+One unexpected error I encountered while working on my first Rails app was in implementing my delete feature. Basically, the ActiveRecord ORM would not allow me to delete the model instance that I wanted to delete, and threw an exception like this: 
 
 ```
 
@@ -47,6 +47,6 @@ If using Foreign Keys in your database, another way to handle this is in your da
 add_foreign_key :rewards, :projects, on_delete: :cascade
 ```
 
-
+Once this is taken care of, ActiveRecord won't complain, and this is a very good thing to remember in general when working with more complex, interrelated databases/domain models. 
 
 

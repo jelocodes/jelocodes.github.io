@@ -89,18 +89,18 @@ Similarly, to preserve the value of 'this' in callbacks, we can use bind():
 
 ```
 const getUserInfo = function(callback) {
-  // ajax call to fetch data asynchronously 
+	// ajax call to fetch data asynchronously 
 	var numOfComments = 100;
 	callback({ comments: numOfComments });
 };
 
 const User = {
-    fullName: 'Jelo Yam',
-    introduce: function() {
-		 getUserInfo(function(data) {
-		console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`)
-		  });
- }
+	fullName: 'Jelo Yam',
+	introduce: function() {
+		getUserInfo(function(data) {
+			console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`)
+		});
+	}
 };
 
 User.introduce();
@@ -109,12 +109,12 @@ User.introduce();
 //vs.
 
 const User = {
-    fullName: 'Jelo Yam',
-    introduce: function() {
-		 getUserInfo(function(data) {
-		console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`) 
-		  }.bind(this));  
- }
+	fullName: 'Jelo Yam',
+	introduce: function() {
+		getUserInfo(function(data) {
+			console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`)
+		}.bind(this));
+	}
 };
 
 User.introduce();

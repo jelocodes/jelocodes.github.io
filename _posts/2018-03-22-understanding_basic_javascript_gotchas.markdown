@@ -50,7 +50,7 @@ As you'd imagine, this can have unintended consequences. The strict equality ope
 
 **Weird Thing 2: 'this' & Scope**
 
-At first, I thought ```this``` in JS was similar to ```self``` in Ruby, where it points to the object where the keyword is referenced. Not necessarily! In JS, where not everything is an object, the value of ```this``` is specifically determined by whether or not it's referenced *within* a method (i.e. a function that's a property of a JS object). If ```this``` is referenced inside a method, then its value is the object which received the method call. If it's called outside of a method, its value is automatically the global scope. This can cause confusion in nested functions:
+At first, I thought 'this' in JS was similar to 'self' in Ruby, where it points to the object where the keyword is referenced. Not necessarily! In JS, where not everything is an object, the value of 'this' is specifically determined by whether or not it's referenced *within* a method (i.e. a function that's a property of a JS object). If 'this' is referenced inside a method, then its value is the object which received the method call. If it's called outside of a method, its value is automatically the global scope. This can cause confusion in nested functions:
 
 ```
 let person = {

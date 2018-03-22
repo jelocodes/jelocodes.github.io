@@ -69,7 +69,7 @@ person.greet()
 
 If we had returned 'this' directly within person's method greet(), we would have returned 'person.' Because person's greet() method contains and ultimately returns the 'this' value of another inner function, otherFunction(), 'this' points to the global/window scope. This is because otherFunction(), which is the function that references 'this,' is not a method (it is not a function that's directly a property of an object). 
 
-JS lets us explicitly set the value of 'this' to whatever we'd like, by using the the call() or apply() methods:
+JS lets us explicitly set the value of 'this' to whatever we'd like, by using the call() or apply() methods:
 
 ```
 let sally = {name: 'sally'}

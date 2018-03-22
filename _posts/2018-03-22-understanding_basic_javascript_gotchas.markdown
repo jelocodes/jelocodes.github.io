@@ -40,7 +40,7 @@ There are two types of equality operators in JS which are used to return boolean
 // => true
 ```
 
-As you'd imagine, this can have unintended consequences (This is the explanation for the 'null' weirdness earlier. The engine is trying very hard to perform type comparisons in order to compare null with the other data types). The strict equality operator never performs type conversions, and should ALWAYS be your go-to for comparisons: 
+As you'd imagine, this can have unintended consequences. The strict equality operator never performs type conversions, and should ALWAYS be your go-to for comparisons: 
 
 ```
 42 === '42'

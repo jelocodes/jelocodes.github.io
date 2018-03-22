@@ -98,9 +98,9 @@ const User = {
     fullName: 'Jelo Yam',
     introduce: function() {
 		 getUserInfo(function(data) {
-				console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`)
+		console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`)
 		  });
-	 }
+ }
 };
 
 User.introduce();
@@ -112,9 +112,9 @@ const User = {
     fullName: 'Jelo Yam',
     introduce: function() {
 		 getUserInfo(function(data) {
-				console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`) 
+		console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`) 
 		  }.bind(this));  
-	 }
+ }
 };
 
 User.introduce();

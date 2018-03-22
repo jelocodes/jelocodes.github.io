@@ -6,9 +6,10 @@ permalink:  understanding_basic_javascript_gotchas
 ---
 
 
-According to StackOverflow's recent survey of over 100,000 developers, JavaScript (JS) is the most widely-used technology 6 years in a row(!!).
+According to StackOverflow's recent survey of over 100,000 developers, JavaScript (JS) is the most widely-used technology 6 years in a row.
 
 ![](https://cdn-images-1.medium.com/max/1600/1*ZGL0b7nWq1dOP46AJQQruw.png)
+> Via StackOverflow
 
 As the internet becomes increasingly integrated with the world outside of just the desktop, the "language of the web" becomes even more relevant. Though when I first started learning JS, I had a tough time understanding why the language had become so widely adapted. It had a bunch of weird quirks that would continuously plague the codebases that I worked with, such as conditionals returning 'true' for things that I knew should've been 'false,' and variables strangely not being defined or defined as something unexpected in my function calls. After some reading and a lot of coding, I started understanding why these things occurred, and that understanding gave way to good coding patterns, and exposed how fun/powerful JS can be.
 
@@ -80,10 +81,49 @@ function greet(customer) {
 let newGreet = greet.call(sally);
  
 newGreet('Bob')
-// Hi Bob, my name is sally!
+
+//=> Hi Bob, my name is sally!
 ```
 
-Similarly, to preserve the value of 'this' in callbacks, we can use bind().
+Similarly, to preserve the value of 'this' in callbacks, we can use bind():
+
+```
+const getUserInfo = function(callback) {
+   // ajax call to fetch data asynchronously 
+	 var numOfComments = 100;
+	 callback({ comments: numOfComments });
+};
+
+const User = {
+    fullName: 'Jelo Yam',
+    introduce: function() {
+		    getUserInfo(function(data) {
+				    console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`)
+		    });
+		}
+};
+
+User.introduce();
+
+//=> Hi, my name is undefined and I made 100 comments
+
+//vs.
+
+const User = {
+    fullName: 'Jelo Yam',
+    introduce: function() {
+		    getUserInfo(function(data) {
+				    console.log(`Hi, my name is ${this.fullName} and I made ${data.comments} comments`) 
+				// as its not references within a method, 'this' currently refers to window
+		    }.bind(this));  
+				// as this area is now outside of the callback function and within the introduce() method, 'this' refers to User
+		}
+};
+
+User.introduce();
+
+//=> Hi, my name is Jelo Yam and I made 100 comments 
+```
 
 **Weird Thing 3: Scope & Variable Declaration** 
 
@@ -144,6 +184,8 @@ for (let i = 0; i < array.length; i++) {
 ```
 
 Unlike the 'var' keyword which declares things in function-scope, the 'let' keyword declares things in block-scope, as is more intuitively expected (i.e. in this case, the 'loop' scope). Therefore, in the code above, each iteration of the loop is a new 'i' assignment within the loop, as is with 'creature,' as intended.
+
+Not only acknowledging that these oddities exist, but understanding *why* they exist, can go a long way to writing better code, and fully unlocking the potential of a programming language.
 
 
 

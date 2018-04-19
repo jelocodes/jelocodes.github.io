@@ -5,10 +5,6 @@ date:       2018-03-22 01:30:56 -0400
 permalink:  understanding_basic_javascript_gotchas
 ---
 
-
-![](https://cdn-images-1.medium.com/max/1600/1*ZGL0b7nWq1dOP46AJQQruw.png)
-> According to StackOverflow's recent survey of over 100,000 developers, JavaScript is the most widely-used technology 6 years in a row.
-
 As the internet becomes increasingly integrated with the world outside of just the desktop, the "language of the web" becomes even more relevant. Though when I first started learning JS, I had a tough time understanding why the language had become so widely adapted. It had a bunch of weird quirks that would continuously plague the codebases that I worked with, such as conditionals returning 'true' for things that I knew should've been 'false,' and variables strangely not being defined or defined as something unexpected in my function calls. After some reading and a lot of coding, I started understanding why these things occurred, and that understanding gave way to good coding patterns, and exposed how fun/powerful JS can be.
 
 To solidify what I've learned, here are some of the oddities that repeatedly threw me for a loop (heh) when I first started learning, why they occur, and how to avoid them:

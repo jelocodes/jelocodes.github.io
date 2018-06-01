@@ -208,23 +208,23 @@ My AJAX post request then creates the comment and passes in the returned JSON da
 $("form#new_comment").submit(function(e){
     e.preventDefault();
 		
-		Comment.templateSource = $("#comment-section-template").html();
-		Comment.template = Handlebars.compile(Comment.templateSource);
+    Comment.templateSource = $("#comment-section-template").html();
+    Comment.template = Handlebars.compile(Comment.templateSource);
 
     let $form = $(this);
-		let action = $form.attr("action);
-		let params = $form.serialize();
+    let action = $form.attr("action);
+    let params = $form.serialize();
 		
-		$.ajax({
-		    url: action,
-				data: params,
-				dataType: "json",
-				method: "POST"
-		}).success(function(json){
+    $.ajax({
+        url: action,
+        data: params,
+        dataType: "json",
+        method: "POST"
+    }).success(function(json){
         let comment = new Comment(json);
-				let commentMarkup = comment.renderCommentMarkup();
-				$('div.c-section').prepend(commentMarkup);
-		})
+        let commentMarkup = comment.renderCommentMarkup();
+        $('div.c-section').prepend(commentMarkup);
+    })
 })
 ```
 

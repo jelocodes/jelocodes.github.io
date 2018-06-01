@@ -187,19 +187,20 @@ I created multiple Handlebars templates for each section of my markup that I nee
 A simple example is the #create action of my Comments controller, which, with the to_json method, now distinguishes what type of response data it sends back to the browser depending on my request (html or JSON).
 
 ```
-	def create 
-		@commentable = Project.find(params[:comment][:commentable_id])
-		@comment = @commentable.comments.new(comment_params) 
-		if @comment.save 
-			respond_to do |f|
-			f.html {redirect_to project_path(@commentable), notice: 'Your comment was successfully posted!'}
-			f.json {render :json => @comment.to_json(:include => {:user => {:only => :username}})}
-			end			
-		else 
-			redirect_to session.delete(:return_to), notice: "Your comment wasn't posted! Try again!"
+def create
+    @commentable = Project.find(params[:comment][:commentable_id])
+		@comment = @commentable.comments.new(comment_params)
+		
+		if @comment.save
+		    respond_to do |f|
+				    f.html {redirect_to project_path(@commentable), notice: 'Your comment was successfully posted!'}
+						f.json {render :json => @comment.to_json(:include => {:user => {:only => :username}})}
+			  end 
+    else
+		    redirect_to session.delete(:return_to), notice: "Your comment wasn't posted! Try again!"
 		end
-	end
-	```
+end
+```
 	
 My AJAX post request then creates the comment and passes in the returned JSON data into my Handlebars comments template, updating the DOM dynamically.
 
@@ -240,7 +241,7 @@ The solution is to not place the event listener on the element itself, but a sta
 	$("div.wrapper").on("submit", 'form#new_comment', function(e){
 		e.preventDefault();
 		
-		...
+		// etc...
 
 	})
 ```

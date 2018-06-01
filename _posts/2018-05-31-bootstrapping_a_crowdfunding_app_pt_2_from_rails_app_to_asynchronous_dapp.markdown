@@ -192,8 +192,8 @@ def create
     @comment = @commentable.comments.new(comment_params)
 		
     if @comment.save
-		    respond_to do |f|
-        f.html {redirect_to project_path(@commentable), notice: 'Your comment was successfully posted!'}
+        respond_to do |f|
+            f.html {redirect_to project_path(@commentable), notice: 'Your comment was successfully posted!'}
             f.json {render :json => @comment.to_json(:include => {:user => {:only => :username}})}
         end 
     else

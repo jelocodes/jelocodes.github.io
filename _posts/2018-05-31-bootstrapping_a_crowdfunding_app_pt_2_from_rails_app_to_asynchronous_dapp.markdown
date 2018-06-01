@@ -123,14 +123,14 @@ const ThingFunder = contract(abi)
 Now we're able to trigger contract functionality via jQuery event listeners in our app!
 
 ```
-  $('div.wrapper').on('click', '.nextInstallment', function(event) {
+$('div.wrapper').on('click', '.nextInstallment', function(event) {
     event.preventDefault();
     address = $(this).attr('data-contract');
     thingFunderInstance.payoutToMaker({to: address, from: web3.eth.accounts[0]})
     .then(function (txHash) {
       $('div.rewards').html('<p>Sending transaction...</p>')
     }).catch(console.error);
-  });
+});
 ```
 
 becomes...
@@ -189,16 +189,16 @@ A simple example is the #create action of my Comments controller, which, with th
 ```
 def create
     @commentable = Project.find(params[:comment][:commentable_id])
-		@comment = @commentable.comments.new(comment_params)
+    @comment = @commentable.comments.new(comment_params)
 		
-		if @comment.save
+    if @comment.save
 		    respond_to do |f|
-				    f.html {redirect_to project_path(@commentable), notice: 'Your comment was successfully posted!'}
-						f.json {render :json => @comment.to_json(:include => {:user => {:only => :username}})}
-			  end 
+        f.html {redirect_to project_path(@commentable), notice: 'Your comment was successfully posted!'}
+            f.json {render :json => @comment.to_json(:include => {:user => {:only => :username}})}
+        end 
     else
-		    redirect_to session.delete(:return_to), notice: "Your comment wasn't posted! Try again!"
-		end
+        redirect_to session.delete(:return_to), notice: "Your comment wasn't posted! Try again!"
+    end
 end
 ```
 	
@@ -238,12 +238,12 @@ One thing that is good to remember when working with asynchronous data is that e
 The solution is to not place the event listener on the element itself, but a static parent/container element. This parent element will still be there upon the asynchronous DOM change, and so the event listener will still be intact.
 
 ```
-	$("div.wrapper").on("submit", 'form#new_comment', function(e){
-		e.preventDefault();
+$("div.wrapper").on("submit", 'form#new_comment', function(e){
+	e.preventDefault();
 		
-		// etc...
+	// etc...
 
-	})
+})
 ```
 > Target the static wrapper as opposed to the dynamically rendered new_comment form
 

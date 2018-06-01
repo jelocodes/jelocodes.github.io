@@ -72,7 +72,7 @@ We'd also need to write all of the smart contract functions within the contract 
 
 It's beyond the scope of this article to explain the Remix IDE, but with it, you can compile your contract directly in the browser and see any errors (the Compile tab), as well as test any contract functions (the Run tab). When everything is working, you can deploy the contract onto the blockchain directly from Remix.
 
-<img src="//imgur.com/jF9H1gf.png" class="post-image-placeholder" style="max-width: 85%; min-height: 410px;" original-title="">
+![](http://imgur.com/jF9H1gf.png)
 > Remix IDE
 
 **2. Integrating our web app with the Ethereum blockchain**
@@ -135,7 +135,7 @@ Now we're able to trigger contract functionality via jQuery event listeners in o
 
 becomes...
 
-<img src="//i.imgur.com/wnaRzOF.gif" class="post-image-placeholder" style="max-width: 100%; min-height: 410px;" original-title="">
+![](http://i.imgur.com/wnaRzOF.gif)
 
 > Clicking the nextInstallment button launches MetaMask, which interfaces with the current blockchain provider via JSON RPC to send money via our deployed contract's payoutToMaker() function, asynchronously updating the DOM afterwards.
 
@@ -229,7 +229,7 @@ My AJAX post request then creates the comment and passes in the returned JSON da
 
 becomes:
 
-<img src="//i.imgur.com/C9SQy1s.gif" class="post-image-placeholder" style="max-width: 100%; max-height: 410px;" original-title="">
+![](http://i.imgur.com/C9SQy1s.gif)
 > Asynchronous comment creation and deletion
 
 One thing that is good to remember when working with asynchronous data is that event listeners won't work on dynamically loaded DOM elements. For instance, when dynamically loading a new project's show page, the entire DOM is updated to reflect the new project using Handlebars, including the comment form. The click handler targeting the new_comment form no longer works, because that DOM element no longer exists, and is instead replaced by the dynamically loaded new_comment form.  

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Bootstrapping a CrowdFunding App Pt. 2: From Rails App to Asynchronous dApp"
-date:       2018-06-01 01:59:39 +0000
+date:       2018-05-31 21:59:40 -0400
 permalink:  bootstrapping_a_crowdfunding_app_pt_2_from_rails_app_to_asynchronous_dapp
 ---
 
@@ -56,7 +56,7 @@ What follows is the contract constructor, which is a function that instantiates 
 		divisor = address(this).balance/uint(4);
 		maker.transfer(divisor);
 	}
-	```
+```
 	
 We'd also need to write all of the smart contract functions within the contract declaration. We won't go through the entirety of the contract, but, along with some setters, getters and refund logic, the major function that I needed to create was payoutToMaker(), which sends the next increment of a backer's pledge to the maker. This should be envoked by backers every time a maker provides proof that progress has been made on their project.
 

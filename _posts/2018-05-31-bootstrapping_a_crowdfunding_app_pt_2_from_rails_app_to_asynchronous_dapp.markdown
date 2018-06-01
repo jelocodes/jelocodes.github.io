@@ -172,9 +172,9 @@ This works well for small requests, but gets messy for bigger ones where we woul
 <!-- vs. -->
 
 <script id="sample-template" type="text/x-handlebars-template">
-<li>{first}</li>
-<li>{second}</li>
-<li>{third}</li>
+<li>{ { first } }</li>
+<li>{ { second } }</li>
+<li>{ { third } }</li>
 </script>
 ```
 

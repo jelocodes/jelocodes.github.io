@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Task Monster: Productivity Meets Tamagotchis "
-date:       2018-08-24 03:22:05 +0000
+date:       2018-08-23 23:22:06 -0400
 permalink:  task_monster_productivity_meets_tamagotchis
 ---
 

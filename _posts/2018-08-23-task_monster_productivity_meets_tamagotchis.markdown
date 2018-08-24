@@ -8,7 +8,9 @@ permalink:  task_monster_productivity_meets_tamagotchis
 
 When I was growing up (and you know, also now), I really liked virtual pets. I had keychains of digital pets that I took care of (see Tamagotchi), and games where I could raise and battle them (see Neopets, Digimon and Pokémon). The conceat has always been that these little critters prospered or perished by virtue of your interaction (or lack of interaction) with them. Give it plenty of food and love, and it showed affection to you and got stronger. Ignore it and it might ignore you, or even worse, leave for the digital pet cemetary. This gave the user a reason to keep going back to the software. It was a gamified feedback loop that kept the user hooked. 
 
-Unrelatedly, lately, I've been trying out different note taking and calendar apps to help me streamline my productivity. Evernote and Google Keep were already go-tos, along with team-based apps like Basecamp for larger projects with other humans, but I decided to check out what else was out there. I didn't find much else, so I thought it would be fun to gamify the to-do process by building my own simple app. The idea was simple: mix gamification with productivity to make being productive more fun. And so, the idea for Task Monster was born! Who could resist being productive when doing so helps take care of a cute virtual pet? (The answer, by the way, is no one.) Oh, and what if each monster is truly uniquely yours, cryptographically tied to your unique account on the Ethereum blockchain? Productivity problems solved! Plus, it would give me a chance to use some nifty new technologies, so I decided to take a couple of weeks to hack it out!
+Unrelatedly, lately, I've been trying out different note taking and calendar apps to help me streamline my productivity. Evernote and Google Keep were already go-tos, along with team-based apps like Basecamp for larger projects with other humans, but I decided to check out what else was out there. I didn't find much else, so I thought it would be fun to gamify the to-do process by building my own simple app. The idea was simple: mix gamification with productivity to make being productive more fun. And so, the idea for Task Monster was born! Who could resist being productive when doing so helps take care of a cute virtual pet? (The answer, by the way, is no one.) Oh, and what if each monster is truly uniquely yours, cryptographically tied to your unique account on the Ethereum blockchain? Productivity problems solved! 
+
+This would give me a chance to use some nifty new technologies, so I decided to take a couple of weeks to hack it out!
 
 Technologies Used:
 * React and Redux (for lightning fast (virtual) DOM manipulation in a slick responsive front-end)
@@ -36,7 +38,7 @@ There are two caveats with this set-up:
 
 **b) CSRF token access for user authentication and form sending**
 
-**a)** We need two separate processes running simultaneously for our configuration to work. For example, we can start the client's server to launch on, say, localhost:3000, and likewise, the back-end Rails server can be launched on a separate port on localhost:3001. The client needs to communicate with our back-end server, and vice-versa, so in this configuration, the user's browser would load localhost:3000, accessing all of the static client assets from our front-facing server, which in turn fetches and posts new data to and from our database at localhost:3001 as needed. 
+**a)** We need two separate processes running simultaneously for our configuration to work. For example, we can start the client's server to launch on, say, localhost:3000, and likewise, the back-end Rails server can be launched on a separate port on localhost:3001. The client server needs to communicate with our back-end server, and vice-versa, so in this configuration, the user's browser would load localhost:3000, accessing all of the static client assets from our front-facing server, which in turn would fetch new data to and from our database at localhost:3001 as needed. 
 
 ![](https://i.imgur.com/i0DVIjm.png)
 
@@ -44,16 +46,18 @@ There are two caveats with this set-up:
 
 Declaring...
 
-`web: cd client && npm start
-api: bundle exec rails s -p 3001`
+```
+web: cd client && npm start
+api: bundle exec rails s -p 3001
+```
 
 ...in our Procfile takes care of this. We can now start both servers with the command `foreman start -p 3000`, specifying that our web server runs on port 3000.
 
-**b)** Rails uses CSRF tokens for POST requests. If we want to be able to do things like create new users, tasks, and monsters in our database, we probably (definitely) need this functionality.  This is taken care of automatically with Rails' form builders and action helpers, but since we're building our front-end with React, we have no such luck. Luckily, there is an open source JavaScript solution called JSON Web Token (or [JWT](https://jwt.io/)) which is an open standard that stores hashed tokens in the browser to verify sessions. 
+**b)** Rails uses CSRF tokens for POST requests. If we want to be able to do things like create new users, tasks, and monsters in our database, we definitely need this functionality.  This is taken care of automatically with Rails' form builders and action view helpers, but since we're building our front-end with React, we have no such luck. Luckily, there is an open source JavaScript solution called JSON Web Token (or [JWT](https://jwt.io/)) which is an open standard that stores hashed tokens in the browser to verify sessions. 
 
-The [JWT Gem](https://github.com/jwt/ruby-jwt) is a nifty Ruby gem that takes care of the encoding and decoding of the token, in our case, allowing the back-end to know that the sender of data is in fact the one currently signed into the app. 
+The [JWT Gem](https://github.com/jwt/ruby-jwt) is a nifty Ruby gem that takes care of the encoding and decoding of the token, in our case, allowing our back-end to know that the sender of data is in fact the one currently signed into the app. 
 
-After all of the above, and tinkering with a few [CORS permissions](https://til.hashrocket.com/posts/4d7f12b213-rails-5-api-and-cors) to allow same-origin requests, we can see a simple front-end form successfully creating a new Task object in our back-end and asynchronously populating the view with the returned data.
+After all of the above, and tinkering with a few [CORS permissions](https://til.hashrocket.com/posts/4d7f12b213-rails-5-api-and-cors) to allow same-origin requests, we can see a simple front-end form successfully creating a new Task object in our back-end and asynchronously populating the view with the returned data below:
 
 ![](https://i.imgur.com/hrq4DR4.gif)
 > So... beautiful. 
@@ -102,7 +106,7 @@ With those hurdles solved, comes the fun part: monster brainstorming. Luckily, I
 ![](https://i.imgur.com/MavEmEu.jpg =623x466)
 > Monster sketches
 
-The idea is that as tasks are completed, your monster gets stronger and levels up. I originally didn't know how far to take this concept. Would your monster have stats that would increase too? Would they have attacks? Evolved forms? Oh, what if you could battle other monsters and prove your productivity superiority??? Then I thought "Wait -- wasn't the whole point of this app to help you do your work?" In the end, I figured that all of that fluff, though cool, would actually be counter productive to, well, productivity. You can see the stats still in effect in the .gif below, but I decided to get rid of them in the end product in favour of simplicity. Your monster would have a single attribute, its level, which determined how strong it was, and, therefore, how productive you were being. Nothing else is necessary for incentivization. In fact, too many other features would probably get in the way of actually doing work and be more distracting than anything else. 
+The idea is that as tasks are completed, your monster gets stronger and levels up. I originally didn't know how far to take this concept. Would your monster have stats that would increase too? Would they have attacks? Evolved forms? Oh, what if you could battle other monsters and prove your productivity superiority to the world??? Then I thought "Wait -- wasn't the whole point of this app to help you focus on your work?" In the end, I figured that all of that fluff, though cool, would actually be counter productive to, well, productivity. You can see the stats still in effect in the .gif below, but I decided to get rid of them in the end product in favour of simplicity. Your monster has a single attribute, its level, which determines how strong it is, and, therefore, how productive you're  being on a given task. Nothing else is necessary for incentivization. In fact, too many other features would probably get in the way of actually doing work and be more distracting than anything else. 
 
 ![](https://imgur.com/llVfK0B.gif)
 > Monster cat hates Mondays.
@@ -117,20 +121,20 @@ A piece of technology is only as good as its user experience. Everything can wor
 The Progress Bar calculation is done by looking at the length of a passed-in 'tasks' prop, which is an array containing all of the particular to-do list's to-do items. Each individual task has a 'done' attribute, which is a bool that, when truthy, determines that task item's completion.  We filter the 'done' task items from the tasks prop array, and divide that by the total length of the array, multiplied by 100.
 
 ```
-    let progress = {
-      width: parseInt((((this.props.tasks.filter(task => task.done === true).length) / this.props.tasks.length) * 100),10) + "%"
-    }
+let progress = {
+  width: parseInt((((this.props.tasks.filter(task => task.done === true).length) / this.props.tasks.length) * 100),10) + "%"
+}
 ```
 
 The Task Monster logo is typed in [Amatic SC](https://fonts.google.com/specimen/Amatic+SC), which I chose because it reminded me a bit of the font used in Maurice Sendak's [Where The Wild Things Are](https://images-na.ssl-images-amazon.com/images/I/51fCyTfSXRL.jpg/).
 
 **Part 5: New Monster on the Block**
 
-I thought it would be cool to persist the monsters that users create on the Ethereum blockchain. Each new monster is generated (albeit primitively right now) uniquely as a result of the user's Ethereum wallet address and the name of their to-do list, and lives on the Task Monster smart contract on the blockchain. So, your monster is cryptographically stored as belonging to you, and levels up as a result of your productivity - the being that it's kind of like a permanent, untamperable record of how productive you are (in cute digital monster form!). 
+I thought it would be cool to persist the monsters that users create on the Ethereum blockchain. Each new monster is generated (albeit primitively right now) uniquely as a result of the user's Ethereum wallet address and the name of their to-do list, and lives on the Task Monster smart contract that I've deployed on the blockchain. So, your monster is cryptographically stored as belonging to you, and levels up as a result of your productivity - the idea being that it's kind of like a permanent, untamperable record of how productive you are (in cute digital monster form!). 
 
-I used the [Remix IDE](https://remix.ethereum.org) to code and debug my smart contract, and then used [Truffle](https://truffleframework.com) to deploy it to the Ethereum blockchain (Kovan Test Chain). Client-side, I used the compiled abi and bytecode and fed it into the web3.js JavaScript libraries to create a client-side connection to the smart contract, accessible to users via the [Metamask](https://metamask.io) Chrome extension (you need to have Metamask installed to use Task Monster).
+I used the [Remix IDE](https://remix.ethereum.org) to code and debug my smart contract, and then used [Truffle](https://truffleframework.com) to deploy it to the Ethereum blockchain (specifically, the Kovan Test Chain). Client-side, I used the compiled abi and bytecode and fed it into the web3.js JavaScript libraries to create a client-side connection to the smart contract, its functionality accessible to users via the [Metamask](https://metamask.io) Chrome extension (you need to have Metamask installed to use Task Monster).
 
-On the blockchain, the monsters exist as a struct, having a name, a gender, and are owned by a particular Ethereum address, as denoted in the Solidity code below. We create an array of the unique monster ids (unsigned 256 bit integers), and create a mapping of the monster ids to the actual monster struct objects for easy retrieval.
+On the blockchain, the monsters exist as a struct, having a name, a gender, and are owned by a particular Ethereum address, as denoted in the Solidity code below. We create an array of the unique monster ids (unsigned 256-bit integers), and create a mapping of the monster ids to the actual monster structs for easy retrieval.
 
 ```
 pragma solidity ^0.4.23;
@@ -198,7 +202,7 @@ handleClick = (...arguments) => {
 
 **In the end:**
 
-I'm happy with my little prodictivity tracker MVP, which, by the way, I used to track my progress as I coded the app itself! If interested, fork the [git repo](https://github.com/jelocodes/task-monster-react) and make it better, or watch the demo of it all coming together below!:
+I'm happy with my little prodictivity tracker MVP, which, by the way, I used to track my progress as I coded the app itself! If interested, you can fork the git repo [here](https://github.com/jelocodes/task-monster-react) and make it better, or watch the demo of it all coming together below:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XPvhgOBo8jA?ecver=2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

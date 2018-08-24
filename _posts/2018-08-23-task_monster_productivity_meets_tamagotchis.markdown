@@ -91,7 +91,7 @@ end
 class User 
 	has_many :monsters
 	has_many :task_lists
-  has_many :tasks, through: :task_lists
+	has_many :tasks, through: :task_lists
 end
 ```
 

@@ -36,20 +36,20 @@ There are two caveats with this set-up:
 
 **b) CSRF token access for user authentication and form sending**
 
-a) We need two separate processes running simultaneously for our configuration to work. For example, we can start the client's Webpack server to launch on, say, localhost:3000, and likewise, the backend Rails server can be launched on a separate port on localhost:3001. The client needs to communicate with our backend server, and vice-versa, so in this configuration, the user's browser would load localhost:3000, accessing all of the static client assets from our Webpack server, which in turn fetches and posts new data to and from our database at localhost:3001 as needed. 
+**a)** We need two separate processes running simultaneously for our configuration to work. For example, we can start the client's Webpack server to launch on, say, localhost:3000, and likewise, the backend Rails server can be launched on a separate port on localhost:3001. The client needs to communicate with our backend server, and vice-versa, so in this configuration, the user's browser would load localhost:3000, accessing all of the static client assets from our Webpack server, which in turn fetches and posts new data to and from our database at localhost:3001 as needed. 
 
 ![](https://i.imgur.com/i0DVIjm.png)
 
 [Foreman](https://github.com/ddollar/foreman) is a handy gem to run multiple processes at once for this purpose. We can declare a Procfile in our root directory with `touch Procfile` which delcares the processes that Foreman manages. In our app's case, we want to be able to start and manage the web server and the api server simultaneously on different ports. 
 
-Declaring
+Declaring...
 
 `web: cd client && npm start
 api: bundle exec rails s -p 3001`
 
 in our Procfile takes care of this. We can now start both servers with the command `foreman start -p 3000`.
 
-b) Rails uses CSRF tokens for POST requests. If we want to be able to do things like create new users, tasks, and monsters in our database, we probably need this functionality.  This is taken care of automatically with Rails' form builders and action helpers, but since we're building this with React, we have no such luck. Luckily, there is an open source JavaScript solution called JSON Web Token (or [JWT](https://jwt.io/)) which is an open standard that stores hashed tokens in the browser to verify sessions. 
+**b)** Rails uses CSRF tokens for POST requests. If we want to be able to do things like create new users, tasks, and monsters in our database, we probably need this functionality.  This is taken care of automatically with Rails' form builders and action helpers, but since we're building this with React, we have no such luck. Luckily, there is an open source JavaScript solution called JSON Web Token (or [JWT](https://jwt.io/)) which is an open standard that stores hashed tokens in the browser to verify sessions. 
 
 The [JWT Gem](https://github.com/jwt/ruby-jwt) is a nifty Ruby gem that takes care of the encoding and decoding of the token, in our case, allowing the backend to know that the sender of the data is in fact the one currently signed into the app. 
 
@@ -64,7 +64,7 @@ One component, 'TaskModule,' acts as the main 'gatekeeper' and parent component,
 
 React Router is used for RESTful component routing, which makes routing very manageable all in one component.
 
-**Part 2: Database Domain Model **
+**Part 2: Database Domain Model**
 
 My database (Rails) would need to persist Users, Monsters, Tasks and TaskLists.
 
@@ -116,7 +116,7 @@ A piece of technology is only as good as its user experience. Everything can wor
 
 The Task Monster logo is typed in [Amatic SC](https://fonts.google.com/specimen/Amatic+SC), which I chose because it reminded me a bit of the font used in Maurice Sendak's [Where The Wild Things Are](https://images-na.ssl-images-amazon.com/images/I/51fCyTfSXRL.jpg/).
 
-**Part 5: The Blocks Have Eyes**
+**Part 5: New Monster on the Block**
 
 I thought it would be cool to persist the monsters that users create on the Ethereum blockchain. Each new monster is generated (albeit primitively right now) uniquely as a result of the user's Ethereum wallet address and the name of their to-do list, and lives on the Task Monster smart contract on the blockchain. So, your monster is cryptographically stored as belonging to you, and levels up as a result of your productivity - the being that it's kind of like a permanent, untamperable record of how productive you are (in cute digital monster form!). 
 
@@ -181,7 +181,7 @@ let combined = window.web3.eth.accounts[0].concat(this.state.name)
 // we then pass this into the compiled smart contract upon 'Get New Monster' button click
 
 handleClick = (...arguments) => {
-		taskMonsterInstance.newMonster(arguments.newMonsterGender, arguments.combined, {from: window.web3.eth.accounts[0]})
+    taskMonsterInstance.newMonster(arguments.newMonsterGender, arguments.combined, {from: window.web3.eth.accounts[0]})
 }
 ```
 

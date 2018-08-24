@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "Ruby Game Theory: Tic-Tac-Toe with A.I."
-date:   2017-06-24 21:52:28 -0400
+title:      "Ruby Game Theory: Pseudo Unbeatable Tic-Tac-Toe "
+date:       2017-06-24 21:52:28 -0400
+permalink:  ruby_game_theory_tic-tac-toe_with_a_i
 ---
 
 ![](https://i.ytimg.com/vi/6DGNZnfKYnU/hqdefault.jpg)

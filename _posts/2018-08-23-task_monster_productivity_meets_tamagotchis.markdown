@@ -58,7 +58,7 @@ After all of the above, and tinkering with a few [CORS permissions](https://til.
 ![](https://i.imgur.com/hrq4DR4.gif)
 > So... beautiful. 
 
-The front-end of the app is made up of multiple components, as stateless as possible, using Redux to maintain a single point of truth for all child components. The form components (SignInForm, SignOutForm, etc.) are an exception, as they don't need to be made aware of global state, and are instead controlled components, that use the native fetch API to send and receive data from our Rails back-end, based on the user's input updating the the components' internal state.
+The front-end of the app is made up of multiple components, as stateless as possible, using Redux to maintain a single point of truth for all child components. The form components (SignInForm, SignOutForm, etc.) are an exception, as they don't need to be made aware of global state, and are instead controlled components, that use the native fetch API to send and receive data from our Rails back-end, based on the user's input updating the form component's own internal state.
 
 One component, 'TaskModule,' acts as the main 'gatekeeper' and parent component, keeping track of our Redux dispatch actions and updating its state, and passing this down, along with any methods needed, to all of its child components as props. The child components then invoke these passed-down callback methods which respond to various synthetic event triggers, updating the parent component's (or Redux store's) state, therefore re-rendering any and all affected components. 
 
